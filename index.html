@@ -635,13 +635,10 @@ async function generate() {
   const cols = lines[0].split(',').filter(c => c.trim());
   if (cols.length < 2) { showError(i18n[lang].err_cols); return; }
 
-  const apiKey = document.getElementById('apiKey').value.trim();
   const btn = document.getElementById('generateBtn'); btn.disabled = true;
   document.getElementById('loading').classList.add('show');
   try {
-    const headers = { 'Content-Type': 'application/json' };
-    if (apiKey) headers['X-Api-Key'] = apiKey;
-    const resp = await fetch(FC_API_URL, { method: 'POST', headers, body: JSON.stringify({ csv }) });
+    const resp = await fetch(FC_API_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ csv }) });
     const text = await resp.text();
     try { const json = JSON.parse(text); if (json.error) throw new Error(json.error); } catch(ex) { if (ex.message && !ex.message.includes('JSON')) throw ex; }
     document.getElementById('resultContent').textContent = text;
