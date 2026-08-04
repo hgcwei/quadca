@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>QuadCA · Pairwise 组合测试用例生成器</title>
+<title>QuadCA · Pairwise 测试用例生成器</title>
 <style>
 :root {
   --primary: #4f46e5;
@@ -20,7 +20,6 @@
   --gray-800: #1f2937;
   --gray-900: #111827;
   --green: #10b981;
-  --red: #ef4444;
   --radius: 12px;
   --shadow: 0 1px 2px rgba(0,0,0,0.05);
   --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07);
@@ -56,8 +55,7 @@ nav .brand {
   color: var(--gray-900);
   text-decoration: none;
 }
-nav .brand span.c { color: var(--primary); }
-nav .nav-links { display: flex; gap: 24px; align-items: center; }
+nav .nav-links { display: flex; gap: 16px; align-items: center; }
 nav .nav-links a { font-size: 14px; color: var(--gray-500); text-decoration: none; font-weight: 500; }
 nav .nav-links a:hover { color: var(--primary); }
 nav .badge {
@@ -70,156 +68,38 @@ nav .badge {
 }
 
 /* ── Container ── */
-.container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+.container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
 
 /* ── Hero ── */
-.hero {
-  padding: 64px 0 48px;
-  text-align: center;
-  background: linear-gradient(180deg, #fff 0%, var(--gray-50) 100%);
-  border-bottom: 1px solid var(--gray-200);
-}
-.hero h1 { font-size: 40px; font-weight: 800; color: var(--gray-900); letter-spacing: -1px; }
+.hero { padding: 80px 0 56px; text-align: center; }
+.hero h1 { font-size: 44px; font-weight: 800; color: var(--gray-900); letter-spacing: -1px; }
 .hero h1 span { color: var(--primary); }
-.hero p { max-width: 640px; margin: 16px auto 0; color: var(--gray-500); font-size: 18px; line-height: 1.7; }
-.hero .stats {
-  display: flex; gap: 48px; justify-content: center; margin-top: 32px;
-}
+.hero p { max-width: 600px; margin: 16px auto 0; color: var(--gray-500); font-size: 18px; line-height: 1.7; }
+.hero .stats { display: flex; gap: 48px; justify-content: center; margin-top: 36px; flex-wrap: wrap; }
 .hero .stat { text-align: center; }
 .hero .stat .num { font-size: 28px; font-weight: 800; color: var(--primary); }
-.hero .stat .label { font-size: 13px; color: var(--gray-400); margin-top: 2px; }
-.hero .actions { margin-top: 32px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.hero .stat .label { font-size: 13px; color: var(--gray-400); margin-top: 4px; }
 
 /* ── Section ── */
-.section { padding: 56px 0; }
-.section-title {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--gray-900);
-  margin-bottom: 8px;
-  letter-spacing: -0.3px;
-}
-.section-subtitle { color: var(--gray-500); font-size: 15px; margin-bottom: 32px; line-height: 1.6; }
+.section { padding: 64px 0; }
 .section.gray { background: var(--gray-50); border-top: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200); }
-
-/* ── Card ── */
-.card {
-  background: #fff;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--gray-200);
-  padding: 32px;
-  margin-bottom: 24px;
-}
-.card-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--gray-700);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* ── Tabs ── */
-.tabs { display: flex; gap: 4px; background: var(--gray-100); border-radius: 10px; padding: 4px; margin-bottom: 20px; }
-.tab {
-  flex: 1; padding: 10px 16px; border: none; background: transparent; border-radius: 8px;
-  font-size: 14px; font-weight: 500; color: var(--gray-500); cursor: pointer; transition: all 0.15s;
-  display: flex; align-items: center; justify-content: center; gap: 6px;
-}
-.tab:hover { color: var(--gray-700); }
-.tab.active { background: #fff; color: var(--primary); box-shadow: var(--shadow); }
-.tab-content { display: none; }
-.tab-content.active { display: block; }
-
-/* ── Drop zone ── */
-.drop-zone {
-  border: 2px dashed var(--gray-300); border-radius: var(--radius); padding: 48px 24px;
-  text-align: center; cursor: pointer; transition: all 0.2s; background: var(--gray-50);
-}
-.drop-zone:hover, .drop-zone.dragover { border-color: var(--primary); background: var(--primary-light); }
-.drop-zone .icon { font-size: 40px; margin-bottom: 12px; color: var(--gray-400); }
-.drop-zone .text { font-size: 15px; color: var(--gray-500); }
-.drop-zone .text strong { color: var(--primary); }
-.drop-zone .hint { font-size: 13px; color: var(--gray-400); margin-top: 6px; }
-.drop-zone .file-info { display: none; margin-top: 16px; padding: 12px 16px; background: var(--primary-light); border-radius: 8px; color: var(--primary); font-size: 14px; font-weight: 500; }
-.drop-zone .file-info.show { display: inline-block; }
-
-/* ── Textarea ── */
-textarea {
-  width: 100%; min-height: 200px; padding: 16px;
-  border: 1.5px solid var(--gray-200); border-radius: var(--radius);
-  font-family: "SF Mono", "Fira Code", "Consolas", monospace;
-  font-size: 14px; line-height: 1.6; resize: vertical;
-  transition: border-color 0.15s; background: var(--gray-50);
-}
-textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(79,70,229,0.1); }
-
-/* ── API Key Row ── */
-.api-row {
-  display: flex; gap: 12px; align-items: center;
-  padding: 12px 16px; background: var(--gray-50); border-radius: 8px;
-  margin-bottom: 20px; border: 1px solid var(--gray-200);
-}
-.api-row label { font-size: 14px; font-weight: 500; color: var(--gray-600); white-space: nowrap; }
-.api-row input {
-  flex: 1; padding: 8px 12px; border: 1px solid var(--gray-200); border-radius: 6px;
-  font-size: 14px; background: #fff; transition: border-color 0.15s;
-}
-.api-row input:focus { outline: none; border-color: var(--primary); }
-
-/* ── Buttons ── */
-.btn {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 10px 24px; border: none; border-radius: 8px;
-  font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.15s; text-decoration: none;
-}
-.btn-primary { background: var(--primary); color: #fff; }
-.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(79,70,229,0.3); }
-.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-.btn-secondary { background: var(--gray-100); color: var(--gray-700); }
-.btn-secondary:hover { background: var(--gray-200); }
-.btn-success { background: var(--green); color: #fff; }
-.btn-success:hover { opacity: 0.9; }
-.btn-outline { background: transparent; color: var(--primary); border: 1.5px solid var(--primary); }
-.btn-outline:hover { background: var(--primary-light); }
-.btn-row { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
-
-/* ── Loading ── */
-.loading { display: none; align-items: center; gap: 10px; padding: 16px 0; color: var(--primary); font-weight: 500; }
-.loading.show { display: flex; }
-.spinner { width: 20px; height: 20px; border: 2.5px solid var(--gray-200); border-top-color: var(--primary); border-radius: 50%; animation: spin 0.6s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
-
-/* ── Result ── */
-#result-card { display: none; }
-#result-card.show { display: block; }
-.result-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 12px; }
-.result-stats { font-size: 14px; color: var(--gray-500); }
-.result-stats strong { color: var(--gray-800); }
-pre.result-content {
-  background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px;
-  padding: 16px; font-size: 13px; line-height: 1.5; max-height: 400px; overflow-y: auto;
-  font-family: "SF Mono", "Consolas", monospace;
-}
-
-/* ── Error ── */
-.error-box { display: none; padding: 14px 16px; background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; color: var(--red); font-size: 14px; margin-bottom: 16px; }
-.error-box.show { display: block; }
+.section-title { font-size: 22px; font-weight: 700; color: var(--gray-900); margin-bottom: 32px; }
 
 /* ── Advantage Grid ── */
 .adv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.adv-item { padding: 24px; background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius); }
+.adv-item { padding: 28px; background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius); }
 .adv-item .icon { font-size: 28px; margin-bottom: 12px; }
 .adv-item h4 { font-size: 16px; font-weight: 600; color: var(--gray-900); margin-bottom: 6px; }
-.adv-item p { font-size: 14px; color: var(--gray-500); line-height: 1.6; }
+.adv-item p { font-size: 14px; color: var(--gray-500); line-height: 1.6; margin: 0; }
 
 /* ── Benchmark Table ── */
-.bench-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 16px 0; }
+.bench-box { background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius); padding: 24px; }
+.bench-box .label { font-size: 14px; font-weight: 600; color: var(--gray-700); margin-bottom: 12px; }
+.bench-table { width: 100%; border-collapse: collapse; font-size: 14px; }
 .bench-table th { background: var(--gray-100); font-weight: 600; padding: 10px 14px; text-align: left; border: 1px solid var(--gray-200); }
 .bench-table td { padding: 10px 14px; border: 1px solid var(--gray-200); }
-.bench-table tr:last-child td { background: var(--primary-light); font-weight: 600; color: var(--primary); }
+.bench-table .highlight { background: var(--primary-light); font-weight: 600; color: var(--primary); }
+.bench-table .note { font-size: 12px; color: var(--gray-400); padding-top: 8px; }
 
 /* ── Pricing ── */
 .pricing-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
@@ -237,41 +117,109 @@ pre.result-content {
 .pricing-card .plan { font-size: 14px; font-weight: 600; color: var(--gray-400); text-transform: uppercase; letter-spacing: 1px; }
 .pricing-card .price { font-size: 36px; font-weight: 800; color: var(--gray-900); margin: 16px 0; }
 .pricing-card .price span { font-size: 16px; font-weight: 400; color: var(--gray-400); }
-.pricing-card .desc { font-size: 14px; color: var(--gray-500); line-height: 1.6; margin-bottom: 20px; }
-.pricing-card .features { list-style: none; padding: 0; margin: 0 0 24px; text-align: left; }
-.pricing-card .features li { padding: 6px 0; font-size: 14px; color: var(--gray-600); display: flex; align-items: center; gap: 8px; }
-.pricing-card .features li::before { content: '✓'; color: var(--green); font-weight: 700; }
+.pricing-card .desc { font-size: 14px; color: var(--gray-500); margin-bottom: 20px; }
+.pricing-card ul { list-style: none; padding: 0; margin: 0 0 24px; text-align: left; }
+.pricing-card ul li { padding: 6px 0; font-size: 14px; color: var(--gray-600); display: flex; align-items: center; gap: 8px; }
+.pricing-card ul li::before { content: '✓'; color: var(--green); font-weight: 700; }
 
-/* ── API Docs ── */
-pre.code {
-  background: var(--gray-900); color: #e5e7eb; border-radius: 8px; padding: 16px;
-  font-size: 13px; line-height: 1.6; overflow-x: auto; font-family: "SF Mono", "Consolas", monospace;
+/* ── Buttons ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px; padding: 10px 24px;
+  border: none; border-radius: 8px; font-size: 15px; font-weight: 600;
+  cursor: pointer; transition: all 0.15s; text-decoration: none;
 }
-pre.code .cm { color: #6b7280; } /* comment */
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(79,70,229,0.3); }
+.btn-outline { background: transparent; color: var(--primary); border: 1.5px solid var(--primary); }
+.btn-outline:hover { background: var(--primary-light); }
+.btn-sm { padding: 8px 16px; font-size: 13px; }
+.btn-full { width: 100%; justify-content: center; }
 
-/* ── Example Table ── */
-.example-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
-.example-table th { background: var(--gray-100); font-weight: 600; padding: 8px 12px; text-align: left; border: 1px solid var(--gray-200); }
-.example-table td { padding: 8px 12px; border: 1px solid var(--gray-200); }
-.example-table tr:hover { background: var(--gray-50); }
+/* ── Modal ── */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4);
+  z-index: 100; align-items: flex-start; justify-content: center; overflow-y: auto;
+  padding: 40px 16px 80px;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: #fff; border-radius: 16px; width: 100%; max-width: 720px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15); margin-top: 40px; overflow: hidden;
+}
+.modal-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 24px; border-bottom: 1px solid var(--gray-200);
+}
+.modal-header h3 { font-size: 18px; font-weight: 700; color: var(--gray-900); }
+.modal-close {
+  width: 32px; height: 32px; border: none; background: var(--gray-100);
+  border-radius: 8px; font-size: 18px; cursor: pointer; color: var(--gray-400);
+  display: flex; align-items: center; justify-content: center;
+}
+.modal-close:hover { background: var(--gray-200); }
+.modal-body { padding: 24px; }
+
+/* ── Modal Tabs ── */
+.mtabs { display: flex; gap: 4px; background: var(--gray-100); border-radius: 10px; padding: 4px; margin-bottom: 16px; }
+.mtab {
+  flex: 1; padding: 8px 12px; border: none; background: transparent; border-radius: 8px;
+  font-size: 13px; font-weight: 500; color: var(--gray-500); cursor: pointer; transition: all 0.15s;
+}
+.mtab:hover { color: var(--gray-700); }
+.mtab.active { background: #fff; color: var(--primary); box-shadow: var(--shadow); }
+.mtab-content { display: none; }
+.mtab-content.active { display: block; }
+
+/* ── Modal elements ── */
+textarea {
+  width: 100%; min-height: 180px; padding: 14px;
+  border: 1.5px solid var(--gray-200); border-radius: 8px;
+  font-family: "SF Mono", "Consolas", monospace; font-size: 13px; line-height: 1.6;
+  resize: vertical; background: var(--gray-50);
+}
+textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(79,70,229,0.1); }
+.drop-zone {
+  border: 2px dashed var(--gray-300); border-radius: 8px; padding: 36px 24px;
+  text-align: center; cursor: pointer; transition: all 0.2s; background: var(--gray-50);
+}
+.drop-zone:hover, .drop-zone.dragover { border-color: var(--primary); background: var(--primary-light); }
+.drop-zone .icon { font-size: 32px; color: var(--gray-400); }
+.drop-zone .text { font-size: 14px; color: var(--gray-500); margin-top: 8px; }
+.drop-zone .text strong { color: var(--primary); }
+.drop-zone .file-info { display: none; margin-top: 12px; padding: 8px 14px; background: var(--primary-light); border-radius: 6px; color: var(--primary); font-size: 13px; }
+.drop-zone .file-info.show { display: inline-block; }
+.api-row { display: flex; gap: 10px; align-items: center; padding: 10px 14px; background: var(--gray-50); border-radius: 8px; margin-bottom: 16px; border: 1px solid var(--gray-200); }
+.api-row label { font-size: 13px; font-weight: 500; color: var(--gray-600); white-space: nowrap; }
+.api-row input { flex: 1; padding: 6px 10px; border: 1px solid var(--gray-200); border-radius: 6px; font-size: 13px; }
+.api-row input:focus { outline: none; border-color: var(--primary); }
+.mbtn-row { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+.loading { display: none; align-items: center; gap: 8px; padding: 12px 0; color: var(--primary); font-weight: 500; font-size: 14px; }
+.loading.show { display: flex; }
+.spinner { width: 18px; height: 18px; border: 2px solid var(--gray-200); border-top-color: var(--primary); border-radius: 50%; animation: spin 0.6s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.error-box { display: none; padding: 10px 14px; background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; color: var(--red); font-size: 13px; margin-bottom: 12px; }
+.error-box.show { display: block; }
+.result-box { display: none; }
+.result-box.show { display: block; }
+.result-box .stats { font-size: 13px; color: var(--gray-500); margin-bottom: 10px; }
+.result-box .stats strong { color: var(--gray-800); }
+.result-box pre {
+  background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px;
+  padding: 14px; font-size: 12px; line-height: 1.5; max-height: 300px; overflow-y: auto;
+  font-family: "SF Mono", "Consolas", monospace;
+}
 
 /* ── Footer ── */
-footer {
-  text-align: center; padding: 48px 24px 40px;
-  color: var(--gray-400); font-size: 13px; border-top: 1px solid var(--gray-200);
-}
+footer { text-align: center; padding: 40px 24px; color: var(--gray-400); font-size: 13px; }
 footer a { color: var(--primary); text-decoration: none; }
-footer .links { display: flex; gap: 24px; justify-content: center; margin-bottom: 12px; }
-footer .links a { font-size: 14px; }
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .adv-grid, .pricing-grid { grid-template-columns: 1fr; }
   .hero h1 { font-size: 28px; }
-  .hero .stats { gap: 24px; flex-wrap: wrap; }
-  .card { padding: 20px; }
-  .drop-zone { padding: 32px 16px; }
-  .tabs { flex-direction: column; }
+  .hero .stats { gap: 24px; }
+  nav { padding: 0 16px; }
+  nav .nav-links a:not(.btn) { display: none; }
 }
 </style>
 </head>
@@ -284,11 +232,10 @@ footer .links a { font-size: 14px; }
   </a>
   <div class="nav-links">
     <a href="#advantages">优势</a>
-    <a href="#usage">使用</a>
     <a href="#pricing">定价</a>
-    <a href="#api">API</a>
     <a href="https://github.com/hgcwei/quadca" target="_blank">GitHub</a>
     <span class="badge">v1.0</span>
+    <button class="btn btn-primary btn-sm" onclick="openModal()">🚀 使用工具</button>
   </div>
 </nav>
 
@@ -303,23 +250,18 @@ footer .links a { font-size: 14px; }
       <div class="stat"><div class="num">933</div><div class="label">平均用例数（30因子）</div></div>
       <div class="stat"><div class="num">4%+</div><div class="label">优于 ACTS</div></div>
     </div>
-    <div class="actions">
-      <a href="#usage" class="btn btn-primary">🚀 立即使用</a>
-      <a href="#advantages" class="btn btn-outline">📖 了解更多</a>
-    </div>
   </div>
 </div>
 
-<!-- ════ 核心优势 ════ -->
+<!-- ════ 优势 ════ -->
 <div class="section gray" id="advantages">
   <div class="container">
     <div class="section-title">⚡ 核心优势</div>
-    <div class="section-subtitle">QuadCA 融合三项关键创新，在 100 组 30 因子基准测试中生成用例数最少</div>
     <div class="adv-grid">
       <div class="adv-item">
         <div class="icon">📐</div>
         <h4>O(1) 缓存对齐内存映射</h4>
-        <p>将 pairwise 覆盖状态扁平化为连续一维数组，缓存友好、访问速度提升 10 倍以上。</p>
+        <p>将 pairwise 覆盖状态扁平化为连续一维数组，缓存友好，访问速度提升 10 倍以上。</p>
       </div>
       <div class="adv-item">
         <div class="icon">⚖️</div>
@@ -334,68 +276,120 @@ footer .links a { font-size: 14px; }
       <div class="adv-item">
         <div class="icon">📊</div>
         <h4>业界领先的压缩率</h4>
-        <p>在 100 组基准测试中，QuadCA 平均用例数 933，优于 ACTS（+4%）、PICT（+14%）、Jenny（+14%）。</p>
+        <p>在 100 组基准测试中，平均用例数 933，优于 ACTS（+4%）、PICT（+14%）、Jenny（+14%）。</p>
       </div>
     </div>
 
-    <!-- Benchmark Table -->
-    <div style="margin-top:24px;background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:24px;">
-      <div style="font-size:14px;font-weight:600;color:var(--gray-700);margin-bottom:12px;">📈 30 因子基准测试对比（7 款工具）</div>
-      <table class="bench-table">
-        <thead><tr><th>工具</th><th>平均用例数</th><th>对比 QuadCA</th></tr></thead>
-        <tbody>
-          <tr><td>QuadCA</td><td>933.1</td><td>—</td></tr>
-          <tr><td>ACTS (NIST)</td><td>973.7</td><td>+4.0%</td></tr>
-          <tr><td>PICT (Microsoft)</td><td>1088.1</td><td>+14.1%</td></tr>
-          <tr><td>Jenny</td><td>1088.8</td><td>+14.3%</td></tr>
-          <tr><td>AllPairsPy</td><td>1230.3</td><td>+23.9%</td></tr>
-          <tr><td>TestFlows</td><td>1249.4</td><td>+25.0%</td></tr>
-          <tr><td>NWisePy</td><td>1522.2</td><td>+38.1%</td></tr>
-        </tbody>
-      </table>
-      <div style="font-size:12px;color:var(--gray-400);margin-top:8px;">所有差异统计显著（p &lt; 10⁻¹⁶, Wilcoxon 符号秩检验）</div>
+    <div style="margin-top:24px;">
+      <div class="bench-box">
+        <div class="label">📈 30 因子基准测试对比</div>
+        <table class="bench-table">
+          <thead><tr><th>工具</th><th>平均用例数</th><th>对比 QuadCA</th></tr></thead>
+          <tbody>
+            <tr class="highlight"><td>QuadCA</td><td>933.1</td><td>—</td></tr>
+            <tr><td>ACTS (NIST)</td><td>973.7</td><td>+4.0%</td></tr>
+            <tr><td>PICT (Microsoft)</td><td>1088.1</td><td>+14.1%</td></tr>
+            <tr><td>Jenny</td><td>1088.8</td><td>+14.3%</td></tr>
+            <tr><td>AllPairsPy</td><td>1230.3</td><td>+23.9%</td></tr>
+            <tr><td>TestFlows</td><td>1249.4</td><td>+25.0%</td></tr>
+            <tr><td>NWisePy</td><td>1522.2</td><td>+38.1%</td></tr>
+          </tbody>
+        </table>
+        <div class="note">所有差异统计显著（p &lt; 10⁻¹⁶, Wilcoxon 符号秩检验）</div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- ════ 使用 ════ -->
-<div class="section" id="usage">
+<!-- ════ 定价 ════ -->
+<div class="section" id="pricing">
   <div class="container">
-    <div class="section-title">📥 生成测试用例</div>
-    <div class="section-subtitle">输入因子定义，一键生成 Pairwise 测试用例集</div>
+    <div class="section-title">💰 定价</div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="plan">免费</div>
+        <div class="price">¥0 <span>/月</span></div>
+        <div class="desc">个人体验评估</div>
+        <ul>
+          <li>50 次调用 / 月</li>
+          <li>Web 在线使用</li>
+          <li>API 基础调用</li>
+          <li>社区支持</li>
+        </ul>
+        <button class="btn btn-outline btn-full" onclick="openModal()">开始使用</button>
+      </div>
+      <div class="pricing-card featured">
+        <div class="plan">个人版</div>
+        <div class="price">¥9.9 <span>/月</span></div>
+        <div class="desc">个人开发者与小团队</div>
+        <ul>
+          <li>500 次调用 / 月</li>
+          <li>优先处理</li>
+          <li>独立 API Key</li>
+          <li>邮件支持</li>
+        </ul>
+        <a href="mailto:your-email@example.com?subject=QuadCA个人版购买" class="btn btn-primary btn-full">立即购买</a>
+      </div>
+      <div class="pricing-card">
+        <div class="plan">企业版</div>
+        <div class="price">¥99 <span>/年</span></div>
+        <div class="desc">企业团队与 CI/CD</div>
+        <ul>
+          <li>不限次数调用</li>
+          <li>专属技术支持</li>
+          <li>多 API Key 管理</li>
+          <li>私有化部署咨询</li>
+        </ul>
+        <a href="mailto:your-email@example.com?subject=QuadCA企业版咨询" class="btn btn-primary btn-full">联系购买</a>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <div class="card">
+<!-- ════ Footer ════ -->
+<footer>
+  <p>Powered by <strong>QuadCA</strong> · 基于 Pairwise 覆盖算法 · 阿里云函数计算</p>
+  <p style="margin-top:4px;"><a href="https://github.com/hgcwei/quadca" target="_blank">GitHub</a> · <a href="mailto:your-email@example.com">联系</a> · © 2026 QuadCA</p>
+</footer>
+
+<!-- ══════════════════ MODAL ══════════════════ -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>🧪 生成测试用例</h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+
       <!-- API Key -->
       <div class="api-row">
         <label>🔑 API Key</label>
-        <input type="text" id="apiKey" placeholder="付费用户在此输入 API Key（免费用户留空）">
-        <span style="font-size:13px;color:var(--gray-400);white-space:nowrap;">免费 50 次/月</span>
+        <input type="text" id="apiKey" placeholder="付费用户输入（免费用户留空）">
       </div>
 
       <!-- Tabs -->
-      <div class="tabs">
-        <button class="tab active" data-tab="paste">⌨️ 粘贴</button>
-        <button class="tab" data-tab="upload">📁 上传</button>
-        <button class="tab" data-tab="sample">📋 示例</button>
+      <div class="mtabs">
+        <button class="mtab active" data-tab="paste">⌨️ 粘贴</button>
+        <button class="mtab" data-tab="upload">📁 上传</button>
+        <button class="mtab" data-tab="sample">📋 示例</button>
       </div>
 
-      <div class="tab-content active" id="tab-paste">
+      <div class="mtab-content active" id="tab-paste">
         <textarea id="csvInput" placeholder="Browser,OS,Language,Screen&#10;Chrome,Windows,English,1080p&#10;Firefox,macOS,Chinese,720p&#10;Safari,Linux,Japanese,4K&#10;Edge,,French,"></textarea>
       </div>
 
-      <div class="tab-content" id="tab-upload">
+      <div class="mtab-content" id="tab-upload">
         <div class="drop-zone" id="dropZone">
           <div class="icon">📂</div>
           <div class="text">拖拽文件到此处，或 <strong>点击选择</strong></div>
-          <div class="hint">支持 .csv / .txt</div>
-          <div class="file-info" id="fileInfo">✅ 已选择：<span id="fileName"></span></div>
+          <div class="file-info" id="fileInfo">✅ <span id="fileName"></span></div>
           <input type="file" id="fileInput" accept=".csv,.txt" style="display:none">
         </div>
       </div>
 
-      <div class="tab-content" id="tab-sample">
-        <p style="font-size:14px;color:var(--gray-500);margin-bottom:12px;">第一行因子名，后续每行每个因子的水平值。不同因子可以有不同数量的水平（留空即可）。</p>
-        <table class="example-table">
+      <div class="mtab-content" id="tab-sample">
+        <p style="font-size:13px;color:var(--gray-500);margin-bottom:10px;">第一行因子名，后续行每个因子的水平值，不同因子水平数可不同。</p>
+        <table class="bench-table" style="font-size:12px;margin-bottom:10px;">
           <thead><tr><th>Browser</th><th>OS</th><th>Language</th><th>Screen</th></tr></thead>
           <tbody>
             <tr><td>Chrome</td><td>Windows</td><td>English</td><td>1080p</td></tr>
@@ -404,205 +398,59 @@ footer .links a { font-size: 14px; }
             <tr><td>Edge</td><td></td><td>French</td><td></td></tr>
           </tbody>
         </table>
-        <div class="btn-row"><button class="btn btn-secondary" onclick="loadSample()">📋 使用此示例</button></div>
+        <button class="btn btn-secondary btn-sm" onclick="loadSample()">📋 使用此示例</button>
       </div>
 
       <div class="error-box" id="errorBox"></div>
 
-      <div class="btn-row">
+      <div class="mbtn-row">
         <button class="btn btn-primary" id="generateBtn" onclick="generate()">🚀 生成测试用例</button>
-        <button class="btn btn-secondary" onclick="clearAll()">🗑️ 清空</button>
+        <button class="btn btn-secondary btn-sm" onclick="clearModal()">清空</button>
       </div>
 
       <div class="loading" id="loading">
         <div class="spinner"></div>
-        <span>正在计算最优测试用例集，请稍候...</span>
+        <span>正在计算...</span>
       </div>
-    </div>
 
-    <!-- Result -->
-    <div class="card" id="result-card">
-      <div class="result-header">
-        <div>
-          <div class="card-title" style="margin-bottom:4px;">✅ 生成结果</div>
-          <div class="result-stats" id="resultStats"></div>
+      <div class="result-box" id="resultBox">
+        <div class="stats" id="resultStats"></div>
+        <div class="mbtn-row" style="margin-top:0;margin-bottom:10px;">
+          <a class="btn btn-success btn-sm" id="downloadLink" style="text-decoration:none">⬇️ 下载 CSV</a>
+          <button class="btn btn-secondary btn-sm" onclick="copyResult()">📋 复制</button>
         </div>
-        <div class="btn-row" style="margin-top:0;">
-          <a class="btn btn-success" id="downloadLink" style="text-decoration:none">⬇️ 下载 CSV</a>
-          <button class="btn btn-secondary" onclick="copyResult()">📋 复制</button>
-        </div>
+        <pre id="resultContent"></pre>
       </div>
-      <pre class="result-content" id="resultContent"></pre>
+
     </div>
   </div>
 </div>
-
-<!-- ════ 定价 ════ -->
-<div class="section gray" id="pricing">
-  <div class="container">
-    <div class="section-title">💰 定价</div>
-    <div class="section-subtitle">灵活套餐，满足不同规模需求</div>
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <div class="plan">免费</div>
-        <div class="price">¥0 <span>/月</span></div>
-        <div class="desc">个人体验评估</div>
-        <ul class="features">
-          <li>50 次调用 / 月</li>
-          <li>Web 在线使用</li>
-          <li>API 基础调用</li>
-          <li>社区支持</li>
-        </ul>
-        <a href="#usage" class="btn btn-outline" style="width:100%;justify-content:center;">开始使用</a>
-      </div>
-      <div class="pricing-card featured">
-        <div class="plan">个人版</div>
-        <div class="price">¥9.9 <span>/月</span></div>
-        <div class="desc">个人开发者与小团队</div>
-        <ul class="features">
-          <li>500 次调用 / 月</li>
-          <li>优先处理</li>
-          <li>独立 API Key</li>
-          <li>邮件支持</li>
-        </ul>
-        <a href="mailto:your-email@example.com" class="btn btn-primary" style="width:100%;justify-content:center;">立即购买</a>
-      </div>
-      <div class="pricing-card">
-        <div class="plan">企业版</div>
-        <div class="price">¥99 <span>/年</span></div>
-        <div class="desc">企业团队与 CI/CD</div>
-        <ul class="features">
-          <li>不限次数调用</li>
-          <li>专属技术支持</li>
-          <li>多 API Key 管理</li>
-          <li>私有化部署咨询</li>
-        </ul>
-        <a href="mailto:your-email@example.com" class="btn btn-primary" style="width:100%;justify-content:center;">联系购买</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ════ API 文档 ════ -->
-<div class="section" id="api">
-  <div class="container">
-    <div class="section-title">🔌 API 文档</div>
-    <div class="section-subtitle">适用于 CI/CD 流水线、自动化测试平台、自定义集成</div>
-
-    <div class="card">
-      <div class="card-title">接口地址</div>
-      <pre class="code">POST https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/</pre>
-    </div>
-
-    <div class="card">
-      <div class="card-title">请求格式</div>
-      <p style="font-size:14px;color:var(--gray-500);margin-bottom:12px;">支持 JSON 和纯文本两种方式：</p>
-      <pre class="code"><span class="cm"># JSON 格式（推荐）</span>
-curl -X POST -H "Content-Type: application/json" \
-  -d '{"csv":"Browser,OS\nChrome,Win\nFirefox,Mac"}' \
-  https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/ -o testcases.csv
-
-<span class="cm"># 纯文本格式（直接上传 CSV 文件）</span>
-curl -X POST -H "Content-Type: text/plain" \
-  --data-binary @factors.csv \
-  https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/ -o testcases.csv</pre>
-    </div>
-
-    <div class="card">
-      <div class="card-title">付费调用（带 API Key）</div>
-      <pre class="code">curl -X POST -H "Content-Type: application/json" \
-  -H "X-Api-Key: sk-quadca-xxxxxxxxxxxx" \
-  -d '{"csv":"Browser,OS\nChrome,Win\nFirefox,Mac"}' \
-  https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/ -o testcases.csv</pre>
-    </div>
-
-    <div class="card">
-      <div class="card-title">GitHub Actions 集成</div>
-      <pre class="code"><span class="cm"># .github/workflows/test.yml</span>
-jobs:
-  generate-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: 生成测试用例
-        run: |
-          curl -X POST -H "Content-Type: text/plain" \
-            --data-binary @factors.csv \
-            https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/ -o testcases.csv
-      - name: 执行测试
-        run: pytest testcases.csv</pre>
-    </div>
-
-    <div class="card">
-      <div class="card-title">Python 调用</div>
-      <pre class="code">import requests
-
-csv_text = """Browser,OS,Language
-Chrome,Windows,English
-Firefox,macOS,Chinese
-Safari,Linux,Japanese"""
-
-resp = requests.post(
-    "https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/",
-    json={"csv": csv_text}
-)
-
-if resp.status_code == 200:
-    with open("testcases.csv", "wb") as f:
-        f.write(resp.content)
-    print(f"生成完成，共 {len(resp.text.split(chr(10)))-1} 个测试用例")
-else:
-    print("错误:", resp.json().get("error"))</pre>
-    </div>
-
-    <div class="card">
-      <div class="card-title">响应格式</div>
-      <p style="font-size:14px;color:var(--gray-500);margin-bottom:12px;">成功返回 CSV 格式的测试用例集，失败返回 JSON 错误信息。</p>
-      <pre class="code"><span class="cm"># 成功（200）</span>
-Content-Type: text/csv; charset=utf-8
-
-Browser,OS,Language
-Chrome,macOS,Chinese
-Firefox,Windows,Japanese
-Safari,Linux,English
-
-<span class="cm"># 错误（400 / 500）</span>
-{"error": "请求内容为空，请传入有效的 CSV 文本"}</pre>
-    </div>
-  </div>
-</div>
-
-<!-- ════ Footer ════ -->
-<footer>
-  <div class="links">
-    <a href="https://github.com/hgcwei/quadca" target="_blank">GitHub</a>
-    <a href="mailto:your-email@example.com">联系</a>
-    <a href="https://hgcwei.github.io/quadca/">首页</a>
-  </div>
-  <p>Powered by <strong>QuadCA</strong> · 基于 Pairwise 覆盖算法 · 阿里云函数计算</p>
-  <p style="margin-top:4px;">© 2026 QuadCA · MIT License</p>
-</footer>
 
 <script>
 const FC_API_URL = 'https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run';
 let uploadedFile = null;
 
-// ── Tabs ──
-document.querySelectorAll('.tab').forEach(tab => {
+// Modal
+function openModal() { document.getElementById('modal').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeModal() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow = ''; }
+document.getElementById('modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// Tabs
+document.querySelectorAll('.mtab').forEach(tab => {
   tab.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.mtab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.mtab-content').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
     document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
   });
 });
 
-// ── Drag & Drop ──
+// Drag & Drop
 const dropZone = document.getElementById('dropZone');
 const fileInput = document.getElementById('fileInput');
 const fileInfo = document.getElementById('fileInfo');
 const fileName = document.getElementById('fileName');
-
 dropZone.addEventListener('click', () => fileInput.click());
 dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
 dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
@@ -611,7 +459,6 @@ dropZone.addEventListener('drop', e => {
   if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
 });
 fileInput.addEventListener('change', () => { if (fileInput.files.length > 0) handleFile(fileInput.files[0]); });
-
 function handleFile(file) {
   if (!file.name.match(/\.(csv|txt)$/i)) { showError('请选择 CSV 或 TXT 文件'); return; }
   uploadedFile = file;
@@ -620,31 +467,25 @@ function handleFile(file) {
 }
 
 function loadSample() {
-  document.getElementById('csvInput').value =
-    'Browser,OS,Language,Screen\nChrome,Windows,English,1080p\nFirefox,macOS,Chinese,720p\nSafari,Linux,Japanese,4K\nEdge,,French,';
-  document.querySelectorAll('.tab')[0].click();
+  document.getElementById('csvInput').value = 'Browser,OS,Language,Screen\nChrome,Windows,English,1080p\nFirefox,macOS,Chinese,720p\nSafari,Linux,Japanese,4K\nEdge,,French,';
+  document.querySelectorAll('.mtab')[0].click();
 }
 
-function clearAll() {
+function clearModal() {
   document.getElementById('csvInput').value = '';
-  document.getElementById('result-card').classList.remove('show');
+  document.getElementById('resultBox').classList.remove('show');
   document.getElementById('errorBox').classList.remove('show');
   document.getElementById('loading').classList.remove('show');
   fileInfo.classList.remove('show'); uploadedFile = null; fileInput.value = '';
 }
 
-function showError(msg) {
-  const el = document.getElementById('errorBox');
-  el.textContent = '❌ ' + msg; el.classList.add('show');
-}
+function showError(msg) { const el = document.getElementById('errorBox'); el.textContent = '❌ ' + msg; el.classList.add('show'); }
 function hideError() { document.getElementById('errorBox').classList.remove('show'); }
 
 async function generate() {
-  hideError(); document.getElementById('result-card').classList.remove('show');
+  hideError(); document.getElementById('resultBox').classList.remove('show');
   let csv = document.getElementById('csvInput').value.trim();
-  if (!csv && uploadedFile) {
-    try { csv = (await uploadedFile.text()).trim(); } catch(e) { showError('无法读取文件'); return; }
-  }
+  if (!csv && uploadedFile) { try { csv = (await uploadedFile.text()).trim(); } catch(e) { showError('无法读取文件'); return; } }
   if (!csv) { showError('请先输入或上传 CSV 内容'); return; }
   const lines = csv.split('\n').filter(l => l.trim());
   if (lines.length < 2) { showError('至少需要 2 行（表头 + 1 个水平值）'); return; }
@@ -654,22 +495,18 @@ async function generate() {
   const apiKey = document.getElementById('apiKey').value.trim();
   const btn = document.getElementById('generateBtn'); btn.disabled = true;
   document.getElementById('loading').classList.add('show');
-
   try {
     const headers = { 'Content-Type': 'application/json' };
     if (apiKey) headers['X-Api-Key'] = apiKey;
     const resp = await fetch(FC_API_URL, { method: 'POST', headers, body: JSON.stringify({ csv }) });
     const text = await resp.text();
     try { const json = JSON.parse(text); if (json.error) throw new Error(json.error); } catch(ex) { if (ex.message && !ex.message.includes('JSON')) throw ex; }
-
-    const resultContent = document.getElementById('resultContent');
-    resultContent.textContent = text;
+    document.getElementById('resultContent').textContent = text;
     const resultLines = text.split('\n').filter(l => l.trim());
     document.getElementById('resultStats').innerHTML = `因子：<strong>${cols.length}</strong> 个 · 测试用例：<strong>${resultLines.length - 1}</strong> 个`;
     const blob = new Blob([text], { type: 'text/csv' });
-    const link = document.getElementById('downloadLink');
-    link.href = URL.createObjectURL(blob); link.download = 'test_cases.csv';
-    document.getElementById('result-card').classList.add('show');
+    const link = document.getElementById('downloadLink'); link.href = URL.createObjectURL(blob); link.download = 'test_cases.csv';
+    document.getElementById('resultBox').classList.add('show');
   } catch(ex) { showError(ex.message); }
   finally { btn.disabled = false; document.getElementById('loading').classList.remove('show'); }
 }
@@ -677,9 +514,9 @@ async function generate() {
 function copyResult() {
   const text = document.getElementById('resultContent').textContent;
   navigator.clipboard.writeText(text).then(() => {
-    const btn = event.target; const orig = btn.textContent;
-    btn.textContent = '✅ 已复制'; setTimeout(() => btn.textContent = orig, 1500);
-  }).catch(() => alert('复制失败，请手动选择'));
+    const btn = document.querySelector('.btn-secondary.btn-sm'); const orig = btn.textContent;
+    btn.textContent = '✅ 已复制'; setTimeout(() => btn.textContent = '📋 复制', 1500);
+  }).catch(() => alert('复制失败'));
 }
 </script>
 </body>
