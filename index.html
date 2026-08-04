@@ -233,6 +233,7 @@ footer a { color: var(--primary); text-decoration: none; }
   <div class="nav-links">
     <a href="#advantages">优势</a>
     <a href="#pricing">定价</a>
+    <a href="#api">API</a>
     <a href="https://github.com/hgcwei/quadca" target="_blank">GitHub</a>
     <span class="badge">v1.0</span>
     <button class="btn btn-primary btn-sm" onclick="openModal()">🚀 使用工具</button>
@@ -343,6 +344,137 @@ footer a { color: var(--primary); text-decoration: none; }
         <a href="mailto:your-email@example.com?subject=QuadCA企业版咨询" class="btn btn-primary btn-full">联系购买</a>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- ════ API 文档 ════ -->
+<div class="section gray" id="api">
+  <div class="container">
+    <div class="section-title">🔌 API 文档</div>
+    <p style="color:var(--gray-500);font-size:15px;margin-bottom:32px;line-height:1.6;">适用于 CI/CD 流水线、自动化测试平台、自定义工具集成。无需安装任何环境，有 curl 即可调用。</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      <div style="background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:24px;">
+        <div style="font-size:14px;font-weight:600;color:var(--gray-700);margin-bottom:12px;">📡 接口地址</div>
+        <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:6px;padding:12px;font-size:13px;font-family:'SF Mono','Consolas',monospace;overflow-x:auto;">POST https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/</pre>
+      </div>
+      <div style="background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:24px;">
+        <div style="font-size:14px;font-weight:600;color:var(--gray-700);margin-bottom:12px;">📦 请求格式</div>
+        <p style="font-size:13px;color:var(--gray-500);margin-bottom:8px;">Content-Type: <strong>application/json</strong> 或 <strong>text/plain</strong></p>
+        <p style="font-size:13px;color:var(--gray-500);margin-bottom:4px;">JSON 格式：</p>
+        <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:6px;padding:12px;font-size:12px;font-family:'SF Mono','Consolas',monospace;overflow-x:auto;">{ "csv": "Browser,OS\nChrome,Win\nFirefox,Mac" }</pre>
+      </div>
+      <div style="background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:24px;">
+        <div style="font-size:14px;font-weight:600;color:var(--gray-700);margin-bottom:12px;">✅ 成功响应</div>
+        <p style="font-size:13px;color:var(--gray-500);margin-bottom:8px;">状态码 <strong>200</strong> · Content-Type: <strong>text/csv</strong></p>
+        <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:6px;padding:12px;font-size:12px;font-family:'SF Mono','Consolas',monospace;overflow-x:auto;">Browser,OS,Language
+Chrome,macOS,Chinese
+Firefox,Windows,Japanese
+Safari,Linux,English</pre>
+      </div>
+      <div style="background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:24px;">
+        <div style="font-size:14px;font-weight:600;color:var(--gray-700);margin-bottom:12px;">❌ 错误响应</div>
+        <p style="font-size:13px;color:var(--gray-500);margin-bottom:8px;">状态码 <strong>400</strong> / <strong>401</strong> / <strong>500</strong></p>
+        <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:6px;padding:12px;font-size:12px;font-family:'SF Mono','Consolas',monospace;overflow-x:auto;">{ "error": "请求内容为空" }</pre>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:24px;">
+      <div style="font-size:14px;font-weight:600;color:var(--gray-700);margin-bottom:12px;">📐 请求示例</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div>
+          <p style="font-size:13px;color:var(--gray-500);margin-bottom:6px;">JSON 格式（推荐）</p>
+          <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:6px;padding:12px;font-size:12px;font-family:'SF Mono','Consolas',monospace;overflow-x:auto;line-height:1.5;"><span style="color:#6b7280;"># 命令行</span>
+curl -X POST -H "Content-Type: application/json" \
+  -d '{"csv":"Browser,OS\nChrome,Win\nFirefox,Mac"}' \
+  https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/ -o testcases.csv
+
+<span style="color:#6b7280;"># Python</span>
+import requests
+resp = requests.post(
+  "https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/",
+  json={"csv": "Browser,OS\nChrome,Win\nFirefox,Mac"}
+)
+open("testcases.csv","wb").write(resp.content)</pre>
+        </div>
+        <div>
+          <p style="font-size:13px;color:var(--gray-500);margin-bottom:6px;">纯文本 / 文件上传</p>
+          <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:6px;padding:12px;font-size:12px;font-family:'SF Mono','Consolas',monospace;overflow-x:auto;line-height:1.5;"><span style="color:#6b7280;"># 直接传文件</span>
+curl -X POST -H "Content-Type: text/plain" \
+  --data-binary @factors.csv \
+  https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/ -o testcases.csv
+
+<span style="color:#6b7280;"># 带 API Key</span>
+curl -X POST -H "Content-Type: application/json" \
+  -H "X-Api-Key: sk-quadca-xxx" \
+  -d '{"csv":"Browser,OS\nChrome,Win"}' \
+  https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/ -o testcases.csv</pre>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:24px;">
+      <div style="font-size:14px;font-weight:600;color:var(--gray-700);margin-bottom:12px;">⚙️ CI/CD 集成</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div>
+          <p style="font-size:13px;color:var(--gray-500);margin-bottom:6px;">GitHub Actions</p>
+          <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:6px;padding:12px;font-size:12px;font-family:'SF Mono','Consolas',monospace;overflow-x:auto;line-height:1.5;"><span style="color:#6b7280;"># .github/workflows/test.yml</span>
+jobs:
+  generate-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 生成测试用例
+        run: |
+          curl -X POST \
+            -H "Content-Type: text/plain" \
+            --data-binary @factors.csv \
+            https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/ \
+            -o testcases.csv
+      - name: 执行测试
+        run: pytest testcases.csv</pre>
+        </div>
+        <div>
+          <p style="font-size:13px;color:var(--gray-500);margin-bottom:6px;">Jenkins 流水线</p>
+          <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:6px;padding:12px;font-size:12px;font-family:'SF Mono','Consolas',monospace;overflow-x:auto;line-height:1.5;">stage('生成测试用例') {
+    sh '''
+        curl -X POST \
+          -H "Content-Type: application/json" \
+          -d '{"csv":"$(cat factors.csv)"}' \
+          https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/ \
+          -o testcases.csv
+    '''
+}
+stage('执行测试') {
+    sh 'pytest testcases.csv'
+}</pre>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);padding:24px;">
+      <div style="font-size:14px;font-weight:600;color:var(--gray-700);margin-bottom:12px;">📋 输入格式说明</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div>
+          <p style="font-size:13px;color:var(--gray-500);margin-bottom:6px;">CSV 格式规范</p>
+          <ul style="font-size:13px;color:var(--gray-600);line-height:1.8;padding-left:18px;">
+            <li>第一行：因子名称（表头）</li>
+            <li>后续行：每个因子的水平值</li>
+            <li>不同因子水平数可不同（留空即可）</li>
+            <li>至少需要 2 个因子</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-size:13px;color:var(--gray-500);margin-bottom:6px;">输入示例</p>
+          <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:6px;padding:12px;font-size:12px;font-family:'SF Mono','Consolas',monospace;overflow-x:auto;">Browser,OS,Language,Screen
+Chrome,Windows,English,1080p
+Firefox,macOS,Chinese,720p
+Safari,Linux,Japanese,4K
+Edge,,French,</pre>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
