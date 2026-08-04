@@ -143,6 +143,7 @@ footer a { color: var(--primary); text-decoration: none; }
   </a>
   <div class="nav-links">
     <a href="#advantages" data-i18n="nav_advantages">Advantages</a>
+    <a href="#donate" data-i18n="nav_donate">☕ Donate</a>
     <span class="badge">v1.0</span>
     <select class="lang-select" id="langSelect" onchange="switchLang(this.value)">
       <option value="en">🇬🇧 English</option>
@@ -203,6 +204,18 @@ footer a { color: var(--primary); text-decoration: none; }
   </div>
 </div>
 
+<!-- ════ Donation ════ -->
+<div class="section gray" id="donate">
+  <div class="container" style="text-align:center;">
+    <div class="section-title" data-i18n="donate_title" style="margin-bottom:16px;">☕ Support QuadCA</div>
+    <p style="color:var(--gray-500);font-size:15px;max-width:500px;margin:0 auto 24px;line-height:1.6;" data-i18n="donate_desc">QuadCA is free and open source. If you find it useful, consider supporting the project with a small donation. Every contribution helps!</p>
+    <div style="display:inline-block;background:#fff;border:1px solid var(--gray-200);border-radius:16px;padding:24px;">
+      <img src="https://raw.githubusercontent.com/hgcwei/quadca/main/e8658a380492411429bf78dbb62d5b64.jpg" alt="WeChat QR" style="width:200px;height:200px;border-radius:8px;">
+      <p style="font-size:13px;color:var(--gray-400);margin-top:12px;" data-i18n="donate_wechat">Scan with WeChat</p>
+    </div>
+  </div>
+</div>
+
 <footer>
   <p>Powered by <strong>QuadCA</strong> · Pairwise Coverage Algorithm · Alibaba Cloud FC</p>
   <p style="margin-top:4px;"><a href="mailto:your-email@example.com">Contact</a> · © 2026 QuadCA</p>
@@ -213,7 +226,6 @@ footer a { color: var(--primary); text-decoration: none; }
   <div class="modal">
     <div class="modal-header"><h3 data-i18n="modal_title">🧪 Generate Test Cases</h3><button class="modal-close" onclick="closeModal()">✕</button></div>
     <div class="modal-body">
-      <div class="api-row"><label>🔑 API Key</label><input type="text" id="apiKey" data-i18n="modal_ph" placeholder="Enter API Key (paid users)"></div>
       <div class="mtabs">
         <button class="mtab active" data-tab="paste" data-i18n="tab_paste">⌨️ Paste</button>
         <button class="mtab" data-tab="upload" data-i18n="tab_upload">📁 Upload</button>
@@ -256,68 +268,51 @@ footer a { color: var(--primary); text-decoration: none; }
 
 <!-- API Modal -->
 <div class="modal-overlay" id="apiModal">
-  <div class="modal" style="max-width:800px;">
-    <div class="modal-header"><h3>🔌 <span data-i18n="api_title">Documentation</span></h3><button class="modal-close" onclick="closeAPIModal()">✕</button></div>
+  <div class="modal" style="max-width:760px;">
+    <div class="modal-header"><h3> API <span data-i18n="api_title">Documentation</span></h3><button class="modal-close" onclick="closeAPIModal()">✕</button></div>
     <div class="modal-body" style="max-height:70vh;overflow-y:auto;">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;">
-        <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:16px;">
-          <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:8px;" data-i18n="api_endpoint">📡 Endpoint</div>
-          <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:6px;padding:10px;font-size:12px;font-family:'SF Mono','Consolas',monospace;overflow-x:auto;">POST https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/</pre>
-        </div>
-        <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:16px;">
-          <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:8px;" data-i18n="api_format">📦 Request Format</div>
-          <p style="font-size:12px;color:var(--gray-500);margin-bottom:6px;" data-i18n="api_format_desc">Content-Type: application/json or text/plain</p>
-          <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:6px;padding:10px;font-size:12px;font-family:'SF Mono','Consolas',monospace;overflow-x:auto;">{ "csv": "Browser,OS\nChrome,Win\nFirefox,Mac" }</pre>
-        </div>
-        <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:16px;">
-          <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:8px;" data-i18n="api_success">✅ Success (200)</div>
-          <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:6px;padding:10px;font-size:12px;font-family:'SF Mono','Consolas',monospace;overflow-x:auto;">Content-Type: text/csv\n\nBrowser,OS,Language\nChrome,macOS,Chinese\nFirefox,Windows,Japanese</pre>
-        </div>
-        <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:16px;">
-          <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:8px;" data-i18n="api_error">❌ Error (400/500)</div>
-          <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:6px;padding:10px;font-size:12px;font-family:'SF Mono','Consolas',monospace;overflow-x:auto;">{ "error": "Empty request body" }
-{ "error": "Computation timeout" }</pre>
-        </div>
+
+      <div style="margin-bottom:20px;">
+        <div style="font-size:14px;font-weight:700;color:var(--gray-900);margin-bottom:8px;" data-i18n="api_endpoint"> Endpoint</div>
+        <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:8px;padding:12px 16px;font-size:13px;font-family:'SF Mono','Consolas',monospace;">POST https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/</pre>
       </div>
-      <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:16px;margin-bottom:16px;">
-        <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:10px;" data-i18n="api_examples">📐 Examples</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
-          <div>
-            <p style="font-size:12px;color:var(--gray-500);margin-bottom:4px;" data-i18n="api_example_json">JSON (recommended)</p>
-            <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:6px;padding:10px;font-size:11px;font-family:'SF Mono','Consolas',monospace;overflow-x:auto;line-height:1.5;"><span style="color:#6b7280;"># curl</span>
+
+      <div style="margin-bottom:20px;">
+        <div style="font-size:14px;font-weight:700;color:var(--gray-900);margin-bottom:8px;" data-i18n="api_format"> Request Format</div>
+        <p style="font-size:13px;color:var(--gray-500);margin-bottom:8px;" data-i18n="api_format_desc">Content-Type: application/json or text/plain</p>
+        <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:8px;padding:12px 16px;font-size:13px;font-family:'SF Mono','Consolas',monospace;">{ "csv": "Browser,OS\nChrome,Win\nFirefox,Mac" }</pre>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <div style="font-size:14px;font-weight:700;color:var(--gray-900);margin-bottom:8px;" data-i18n="api_examples"> Examples</div>
+        <div style="margin-bottom:12px;">
+          <p style="font-size:12px;color:var(--gray-400);margin-bottom:4px;font-weight:600;" data-i18n="api_example_json">JSON (recommended)</p>
+          <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:8px;padding:12px 16px;font-size:12px;font-family:'SF Mono','Consolas',monospace;line-height:1.5;margin:0;"><span style="color:#6b7280;"># curl</span>
 curl -X POST -H "Content-Type: application/json" \
   -d '{"csv":"Browser,OS\nChrome,Win\nFirefox,Mac"}' \
-  https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/ -o testcases.csv
-
-<span style="color:#6b7280;"># Python</span>
-import requests
+  https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/ -o testcases.csv</pre>
+        </div>
+        <div style="margin-bottom:12px;">
+          <p style="font-size:12px;color:var(--gray-400);margin-bottom:4px;font-weight:600;">Python</p>
+          <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:8px;padding:12px 16px;font-size:12px;font-family:'SF Mono','Consolas',monospace;line-height:1.5;margin:0;">import requests
 resp = requests.post(
   "https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/",
   json={"csv": "Browser,OS\nChrome,Win\nFirefox,Mac"}
 )
-open("testcases.csv","wb").write(resp.content)</pre>
-          </div>
-          <div>
-            <p style="font-size:12px;color:var(--gray-500);margin-bottom:4px;" data-i18n="api_example_file">File Upload / API Key</p>
-            <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:6px;padding:10px;font-size:11px;font-family:'SF Mono','Consolas',monospace;overflow-x:auto;line-height:1.5;"><span style="color:#6b7280;"># Upload file</span>
-curl -X POST -H "Content-Type: text/plain" \
+open("testcases.csv", "wb").write(resp.content)</pre>
+        </div>
+        <div>
+          <p style="font-size:12px;color:var(--gray-400);margin-bottom:4px;font-weight:600;" data-i18n="api_example_file">File Upload</p>
+          <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:8px;padding:12px 16px;font-size:12px;font-family:'SF Mono','Consolas',monospace;line-height:1.5;margin:0;">curl -X POST -H "Content-Type: text/plain" \
   --data-binary @factors.csv \
-  https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/ -o testcases.csv
-
-<span style="color:#6b7280;"># With API Key</span>
-curl -X POST -H "Content-Type: application/json" \
-  -H "X-Api-Key: sk-quadca-xxx" \
-  -d '{"csv":"Browser,OS\nChrome,Win"}' \
   https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/ -o testcases.csv</pre>
-          </div>
         </div>
       </div>
-      <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:16px;margin-bottom:16px;">
-        <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:10px;" data-i18n="api_cicd">⚙️ CI/CD Integration</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
-          <div>
-            <p style="font-size:12px;color:var(--gray-500);margin-bottom:4px;">GitHub Actions</p>
-            <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:6px;padding:10px;font-size:11px;font-family:'SF Mono','Consolas',monospace;overflow-x:auto;line-height:1.5;"><span style="color:#6b7280;"># .github/workflows/test.yml</span>
+
+      <div style="margin-bottom:20px;">
+        <div style="font-size:14px;font-weight:700;color:var(--gray-900);margin-bottom:8px;" data-i18n="api_cicd"> CI/CD Integration</div>
+        <p style="font-size:12px;color:var(--gray-400);margin-bottom:4px;font-weight:600;">GitHub Actions</p>
+        <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:8px;padding:12px 16px;font-size:12px;font-family:'SF Mono','Consolas',monospace;line-height:1.5;margin-bottom:8px;"><span style="color:#6b7280;"># .github/workflows/test.yml</span>
 jobs:
   generate-tests:
     runs-on: ubuntu-latest
@@ -330,55 +325,39 @@ jobs:
             https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/ -o testcases.csv
       - name: Run tests
         run: pytest testcases.csv</pre>
-          </div>
-          <div>
-            <p style="font-size:12px;color:var(--gray-500);margin-bottom:4px;">Jenkins Pipeline</p>
-            <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:6px;padding:10px;font-size:11px;font-family:'SF Mono','Consolas',monospace;overflow-x:auto;line-height:1.5;">stage('Generate tests') {
-    sh '''
-        curl -X POST -H "Content-Type: application/json" \
-          -d '{"csv":"$(cat factors.csv)"}' \
-          https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/ -o testcases.csv
-    '''
-}
-stage('Run tests') {
-    sh 'pytest testcases.csv'
+        <p style="font-size:12px;color:var(--gray-400);margin-bottom:4px;font-weight:600;">Jenkins</p>
+        <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:8px;padding:12px 16px;font-size:12px;font-family:'SF Mono','Consolas',monospace;line-height:1.5;margin:0;">stage('Generate tests') {
+    sh '''curl -X POST -H "Content-Type: text/plain" \
+      --data-binary @factors.csv \
+      https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/ -o testcases.csv'''
 }</pre>
-          </div>
-        </div>
       </div>
-      <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:16px;">
-        <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:10px;" data-i18n="api_input">📋 Input Format</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
-          <div>
-            <p style="font-size:12px;color:var(--gray-500);margin-bottom:4px;" data-i18n="api_input_rules">CSV Rules</p>
-            <ul style="font-size:12px;color:var(--gray-600);line-height:1.8;padding-left:16px;margin:0;">
-              <li data-i18n="input_rule1">First row: factor names (header)</li>
-              <li data-i18n="input_rule2">Following rows: level values</li>
-              <li data-i18n="input_rule3">Different factors may have different level counts</li>
-              <li data-i18n="input_rule4">At least 2 factors required</li>
-            </ul>
-          </div>
-          <div>
-            <p style="font-size:12px;color:var(--gray-500);margin-bottom:4px;" data-i18n="api_input_example">Example</p>
-            <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:6px;padding:10px;font-size:11px;font-family:'SF Mono','Consolas',monospace;overflow-x:auto;">Browser,OS,Language,Screen
-Chrome,Windows,English,1080p
-Firefox,macOS,Chinese,720p
-Safari,Linux,Japanese,4K
-Edge,,French,</pre>
-          </div>
-        </div>
+
+      <div style="margin-bottom:20px;">
+        <div style="font-size:14px;font-weight:700;color:var(--gray-900);margin-bottom:8px;" data-i18n="api_success"> Success Response (200)</div>
+        <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:8px;padding:12px 16px;font-size:12px;font-family:'SF Mono','Consolas',monospace;">Content-Type: text/csv
+
+Browser,OS,Language
+Chrome,macOS,Chinese
+Firefox,Windows,Japanese</pre>
       </div>
+
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--gray-900);margin-bottom:8px;" data-i18n="api_error"> Error Response (400/500)</div>
+        <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:8px;padding:12px 16px;font-size:12px;font-family:'SF Mono','Consolas',monospace;">{ "error": "Empty request body" }
+{ "error": "Computation timeout" }</pre>
+      </div>
+
     </div>
   </div>
 </div>
-
 <script>
 const FC_API_URL = 'https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run';
 let uploadedFile = null;
 
 const i18n = {
   en: {
-    nav_advantages: 'Advantages', nav_api: '🔌 API', nav_use: '🚀 Use Tool',
+    nav_advantages: 'Advantages', nav_donate: '☕ Donate', nav_api: '🔌 API', nav_use: '🚀 Use Tool',
     hero_title: 'Test Case Generator', hero_desc: 'Define factors and levels, automatically generate the minimal test suite covering all pairwise combinations. Based on peer-reviewed algorithm, 4%–38% higher compression than leading tools.',
     stat_factors: 'Max Factors', stat_levels: 'Levels per Factor', stat_avg: 'Avg Cases (30 factors)', stat_vs: 'vs ACTS',
     adv_title: '⚡ Key Advantages',
@@ -397,10 +376,11 @@ const i18n = {
     api_success: '✅ Success (200)', api_error: '❌ Error (400/500)', api_examples: '📐 Examples',
     api_example_json: 'JSON (recommended)', api_example_file: 'File Upload / API Key', api_cicd: '⚙️ CI/CD Integration',
     api_input: '📋 Input Format', api_input_rules: 'CSV Rules', input_rule1: 'First row: factor names (header)', input_rule2: 'Following rows: level values', input_rule3: 'Different factors may have different level counts', input_rule4: 'At least 2 factors required', api_input_example: 'Example',
-    err_empty: 'Please enter or upload CSV content', err_rows: 'At least 2 rows required (header + 1 level)', err_cols: 'At least 2 factors (columns) required', err_file: 'Please select a CSV or TXT file', err_read: 'Unable to read file'
+    err_empty: 'Please enter or upload CSV content', err_rows: 'At least 2 rows required (header + 1 level)', err_cols: 'At least 2 factors (columns) required', err_file: 'Please select a CSV or TXT file', err_read: 'Unable to read file',
+    donate_title: ' Support QuadCA', donate_desc: 'QuadCA is free and open source. If you find it useful, consider supporting the project with a small donation. Every contribution helps!', donate_wechat: 'Scan with WeChat'
   },
   zh: {
-    nav_advantages: '优势', nav_api: '🔌 API', nav_use: '🚀 使用工具',
+    nav_advantages: '优势', nav_donate: '☕ 捐赠', nav_api: ' API', nav_use: '🚀 使用工具',
     hero_title: '测试用例生成器', hero_desc: '输入因子与水平定义，自动生成覆盖所有成对组合的最小测试用例集。基于学术论文算法，比同类工具压缩率提升 4%–38%。',
     stat_factors: '最大因子数', stat_levels: '每因子水平数', stat_avg: '平均用例数（30因子）', stat_vs: '优于 ACTS',
     adv_title: '⚡ 核心优势',
@@ -419,10 +399,11 @@ const i18n = {
     api_success: '✅ 成功响应 (200)', api_error: '❌ 错误响应 (400/500)', api_examples: '📐 请求示例',
     api_example_json: 'JSON 格式（推荐）', api_example_file: '文件上传 / 带 API Key', api_cicd: '⚙️ CI/CD 集成',
     api_input: '📋 输入格式说明', api_input_rules: 'CSV 格式规范', input_rule1: '第一行：因子名称（表头）', input_rule2: '后续行：每个因子的水平值', input_rule3: '不同因子水平数可不同', input_rule4: '至少需要 2 个因子', api_input_example: '输入示例',
-    err_empty: '请先输入或上传 CSV 内容', err_rows: '至少需要 2 行（表头 + 1 个水平值）', err_cols: '至少需要 2 个因子（列）', err_file: '请选择 CSV 或 TXT 文件', err_read: '无法读取文件内容'
+    err_empty: '请先输入或上传 CSV 内容', err_rows: '至少需要 2 行（表头 + 1 个水平值）', err_cols: '至少需要 2 个因子（列）', err_file: '请选择 CSV 或 TXT 文件', err_read: '无法读取文件内容',
+    donate_title: '☕ 支持 QuadCA', donate_desc: 'QuadCA 免费开源，如果您觉得有用，欢迎扫码捐赠支持项目发展。每一份支持都很重要！', donate_wechat: '微信扫码捐赠'
   },
   ja: {
-    nav_advantages: '特徴', nav_api: '🔌 API', nav_use: '🚀 使用する',
+    nav_advantages: '特徴', nav_donate: '☕ 寄付', nav_api: '🔌 API', nav_use: '🚀 使用する',
     hero_title: 'テストケース生成器', hero_desc: '因子と水準を定義し、すべてのペアワイズ組合せをカバーする最小テストスイートを自動生成。査読済みアルゴリズムに基づき、主要ツールより 4%–38% 高い圧縮率。',
     stat_factors: '最大因子数', stat_levels: '因子あたり水準数', stat_avg: '平均ケース数（30因子）', stat_vs: 'ACTS比',
     adv_title: '⚡ 主な特長',
@@ -441,7 +422,8 @@ const i18n = {
     api_success: '✅ 成功 (200)', api_error: '❌ エラー (400/500)', api_examples: '📐 サンプル',
     api_example_json: 'JSON（推奨）', api_example_file: 'ファイルアップロード / API Key', api_cicd: '⚙️ CI/CD 統合',
     api_input: '📋 入力形式', api_input_rules: 'CSV ルール', input_rule1: '1行目：因子名（ヘッダー）', input_rule2: '以降の行：水準値', input_rule3: '因子ごとに水準数は異なっても可', input_rule4: '最低2つの因子が必要', api_input_example: '入力例',
-    err_empty: 'CSV内容を入力またはアップロードしてください', err_rows: '最低2行必要（ヘッダー + 1水準）', err_cols: '最低2つの因子（列）が必要です', err_file: 'CSVまたはTXTファイルを選択してください', err_read: 'ファイルを読み取れません'
+    err_empty: 'CSV内容を入力またはアップロードしてください', err_rows: '最低2行必要（ヘッダー + 1水準）', err_cols: '最低2つの因子（列）が必要です', err_file: 'CSVまたはTXTファイルを選択してください', err_read: 'ファイルを読み取れません',
+    donate_title: ' QuadCAを支援', donate_desc: 'QuadCAは無料オープンソースです。ご支援いただける場合は小額の寄付をご検討ください。', donate_wechat: 'WeChatでスキャン'
   },
   ko: {
     nav_advantages: '특징', nav_api: '🔌 API', nav_use: '🚀 사용하기',
@@ -463,7 +445,8 @@ const i18n = {
     api_success: '✅ 성공 (200)', api_error: '❌ 오류 (400/500)', api_examples: '📐 예제',
     api_example_json: 'JSON (권장)', api_example_file: '파일 업로드 / API Key', api_cicd: '⚙️ CI/CD 통합',
     api_input: '📋 입력 형식', api_input_rules: 'CSV 규칙', input_rule1: '첫 행: 요인 이름 (헤더)', input_rule2: '이후 행: 수준 값', input_rule3: '요인별 수준 수 다를 수 있음', input_rule4: '최소 2개 요인 필요', api_input_example: '입력 예',
-    err_empty: 'CSV 내용을 입력하거나 업로드하세요', err_rows: '최소 2행 필요 (헤더 + 1 수준)', err_cols: '최소 2개 요인 (열) 필요', err_file: 'CSV 또는 TXT 파일을 선택하세요', err_read: '파일을 읽을 수 없습니다'
+    err_empty: 'CSV 내용을 입력하거나 업로드하세요', err_rows: '최소 2행 필요 (헤더 + 1 수준)', err_cols: '최소 2개 요인 (열) 필요', err_file: 'CSV 또는 TXT 파일을 선택하세요', err_read: '파일을 읽을 수 없습니다',
+    donate_title: ' QuadCA 후원', donate_desc: 'QuadCA는 무료 오픈소스입니다. 유용하셨다면 소액 후원을 부탁드립니다.', donate_wechat: 'WeChat으로 스캔'
   },
   es: {
     nav_advantages: 'Ventajas', nav_api: '🔌 API', nav_use: '🚀 Usar',
@@ -485,7 +468,8 @@ const i18n = {
     api_success: '✅ Éxito (200)', api_error: '❌ Error (400/500)', api_examples: '📐 Ejemplos',
     api_example_json: 'JSON (recomendado)', api_example_file: 'Subir archivo / API Key', api_cicd: '⚙️ Integración CI/CD',
     api_input: '📋 Formato de Entrada', api_input_rules: 'Reglas CSV', input_rule1: 'Primera fila: nombres de factores (encabezado)', input_rule2: 'Filas siguientes: valores de nivel', input_rule3: 'Diferentes factores pueden tener diferentes cantidades de niveles', input_rule4: 'Se requieren al menos 2 factores', api_input_example: 'Ejemplo',
-    err_empty: 'Ingrese o suba contenido CSV', err_rows: 'Se requieren al menos 2 filas (encabezado + 1 nivel)', err_cols: 'Se requieren al menos 2 factores (columnas)', err_file: 'Seleccione un archivo CSV o TXT', err_read: 'No se puede leer el archivo'
+    err_empty: 'Ingrese o suba contenido CSV', err_rows: 'Se requieren al menos 2 filas (encabezado + 1 nivel)', err_cols: 'Se requieren al menos 2 factores (columnas)', err_file: 'Seleccione un archivo CSV o TXT', err_read: 'No se puede leer el archivo',
+    donate_title: ' Apoyar QuadCA', donate_desc: 'QuadCA es gratuito y de código abierto. Si le resulta útil, considere apoyar el proyecto con una pequeña donación.', donate_wechat: 'Escanear con WeChat'
   },
   fr: {
     nav_advantages: 'Avantages', nav_api: '🔌 API', nav_use: '🚀 Utiliser',
@@ -507,7 +491,8 @@ const i18n = {
     api_success: '✅ Succès (200)', api_error: '❌ Erreur (400/500)', api_examples: '📐 Exemples',
     api_example_json: 'JSON (recommandé)', api_example_file: 'Upload fichier / API Key', api_cicd: '⚙️ Intégration CI/CD',
     api_input: '📋 Format d\'Entrée', api_input_rules: 'Règles CSV', input_rule1: 'Première ligne : noms des facteurs (en-tête)', input_rule2: 'Lignes suivantes : valeurs des niveaux', input_rule3: 'Différents facteurs peuvent avoir différents nombres de niveaux', input_rule4: 'Au moins 2 facteurs requis', api_input_example: 'Exemple',
-    err_empty: 'Entrez ou téléchargez du contenu CSV', err_rows: 'Au moins 2 lignes requises (en-tête + 1 niveau)', err_cols: 'Au moins 2 facteurs (colonnes) requis', err_file: 'Sélectionnez un fichier CSV ou TXT', err_read: 'Impossible de lire le fichier'
+    err_empty: 'Entrez ou téléchargez du contenu CSV', err_rows: 'Au moins 2 lignes requises (en-tête + 1 niveau)', err_cols: 'Au moins 2 facteurs (colonnes) requis', err_file: 'Sélectionnez un fichier CSV ou TXT', err_read: 'Impossible de lire le fichier',
+    donate_title: ' Soutenir QuadCA', donate_desc: 'QuadCA est gratuit et open source. Si vous le trouvez utile, envisagez de soutenir le projet avec un petit don.', donate_wechat: 'Scanner avec WeChat'
   },
   de: {
     nav_advantages: 'Vorteile', nav_api: '🔌 API', nav_use: '🚀 Nutzen',
@@ -529,7 +514,8 @@ const i18n = {
     api_success: '✅ Erfolg (200)', api_error: '❌ Fehler (400/500)', api_examples: '📐 Beispiele',
     api_example_json: 'JSON (empfohlen)', api_example_file: 'Datei-Upload / API Key', api_cicd: '⚙️ CI/CD Integration',
     api_input: '📋 Eingabeformat', api_input_rules: 'CSV Regeln', input_rule1: 'Erste Zeile: Faktornamen (Kopfzeile)', input_rule2: 'Folgende Zeilen: Ebenenwerte', input_rule3: 'Verschiedene Faktoren können unterschiedliche Ebenenanzahlen haben', input_rule4: 'Mindestens 2 Faktoren erforderlich', api_input_example: 'Beispiel',
-    err_empty: 'CSV-Inhalt eingeben oder hochladen', err_rows: 'Mindestens 2 Zeilen erforderlich (Kopfzeile + 1 Ebene)', err_cols: 'Mindestens 2 Faktoren (Spalten) erforderlich', err_file: 'CSV- oder TXT-Datei auswählen', err_read: 'Datei kann nicht gelesen werden'
+    err_empty: 'CSV-Inhalt eingeben oder hochladen', err_rows: 'Mindestens 2 Zeilen erforderlich (Kopfzeile + 1 Ebene)', err_cols: 'Mindestens 2 Faktoren (Spalten) erforderlich', err_file: 'CSV- oder TXT-Datei auswählen', err_read: 'Datei kann nicht gelesen werden',
+    donate_title: ' QuadCA unterstützen', donate_desc: 'QuadCA ist kostenlos und Open Source. Wenn Sie es nützlich finden, erwägen Sie eine kleine Spende zur Unterstützung des Projekts.', donate_wechat: 'Mit WeChat scannen'
   },
   pt: {
     nav_advantages: 'Vantagens', nav_api: '🔌 API', nav_use: '🚀 Usar',
@@ -551,7 +537,8 @@ const i18n = {
     api_success: '✅ Sucesso (200)', api_error: '❌ Erro (400/500)', api_examples: '📐 Exemplos',
     api_example_json: 'JSON (recomendado)', api_example_file: 'Upload de arquivo / API Key', api_cicd: '⚙️ Integração CI/CD',
     api_input: '📋 Formato de Entrada', api_input_rules: 'Regras CSV', input_rule1: 'Primeira linha: nomes dos fatores (cabeçalho)', input_rule2: 'Linhas seguintes: valores de nível', input_rule3: 'Diferentes fatores podem ter diferentes quantidades de níveis', input_rule4: 'Pelo menos 2 fatores necessários', api_input_example: 'Exemplo',
-    err_empty: 'Insira ou envie conteúdo CSV', err_rows: 'Pelo menos 2 linhas necessárias (cabeçalho + 1 nível)', err_cols: 'Pelo menos 2 fatores (colunas) necessários', err_file: 'Selecione um arquivo CSV ou TXT', err_read: 'Não foi possível ler o arquivo'
+    err_empty: 'Insira ou envie conteúdo CSV', err_rows: 'Pelo menos 2 linhas necessárias (cabeçalho + 1 nível)', err_cols: 'Pelo menos 2 fatores (colunas) necessários', err_file: 'Selecione um arquivo CSV ou TXT', err_read: 'Não foi possível ler o arquivo',
+    donate_title: ' Apoiar QuadCA', donate_desc: 'QuadCA é gratuito e open source. Se você achou útil, considere apoiar o projeto com uma pequena doação.', donate_wechat: 'Escanear com WeChat'
   },
   ru: {
     nav_advantages: 'Преимущества', nav_api: '🔌 API', nav_use: '🚀 Использовать',
@@ -573,7 +560,8 @@ const i18n = {
     api_success: '✅ Успех (200)', api_error: '❌ Ошибка (400/500)', api_examples: '📐 Примеры',
     api_example_json: 'JSON (рекомендуется)', api_example_file: 'Загрузка файла / API Key', api_cicd: '⚙️ CI/CD интеграция',
     api_input: '📋 Формат ввода', api_input_rules: 'Правила CSV', input_rule1: 'Первая строка: имена факторов (заголовок)', input_rule2: 'Следующие строки: значения уровней', input_rule3: 'Разные факторы могут иметь разное количество уровней', input_rule4: 'Требуется минимум 2 фактора', api_input_example: 'Пример',
-    err_empty: 'Введите или загрузите CSV содержимое', err_rows: 'Требуется минимум 2 строки (заголовок + 1 уровень)', err_cols: 'Требуется минимум 2 фактора (столбца)', err_file: 'Выберите CSV или TXT файл', err_read: 'Невозможно прочитать файл'
+    err_empty: 'Введите или загрузите CSV содержимое', err_rows: 'Требуется минимум 2 строки (заголовок + 1 уровень)', err_cols: 'Требуется минимум 2 фактора (столбца)', err_file: 'Выберите CSV или TXT файл', err_read: 'Невозможно прочитать файл',
+    donate_title: ' Поддержать QuadCA', donate_desc: 'QuadCA бесплатный и с открытым исходным кодом. Если он вам полезен, рассмотрите возможность небольшой поддержки проекта.', donate_wechat: 'Сканировать через WeChat'
   }
 };
 
