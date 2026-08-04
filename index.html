@@ -44,31 +44,16 @@ nav {
   top: 0;
   z-index: 50;
 }
-nav .brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  font-size: 20px;
-  color: var(--gray-900);
-  text-decoration: none;
-}
+nav .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; color: var(--gray-900); text-decoration: none; }
 nav .nav-links { display: flex; gap: 16px; align-items: center; }
 nav .nav-links a { font-size: 14px; color: var(--gray-500); text-decoration: none; font-weight: 500; cursor: pointer; }
 nav .nav-links a:hover { color: var(--primary); }
-nav .badge {
-  background: var(--primary-light);
-  color: var(--primary);
-  font-size: 11px;
-  font-weight: 600;
-  padding: 3px 12px;
-  border-radius: 20px;
-}
-.lang-btn {
+nav .badge { background: var(--primary-light); color: var(--primary); font-size: 11px; font-weight: 600; padding: 3px 12px; border-radius: 20px; }
+.lang-select {
   background: none; border: 1px solid var(--gray-200); border-radius: 6px;
-  padding: 4px 10px; font-size: 13px; cursor: pointer; color: var(--gray-500); font-weight: 500;
+  padding: 4px 8px; font-size: 13px; cursor: pointer; color: var(--gray-500);
+  font-weight: 500; appearance: auto;
 }
-.lang-btn:hover { border-color: var(--primary); color: var(--primary); }
 .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
 .hero { padding: 80px 0 56px; text-align: center; }
 .hero h1 { font-size: 44px; font-weight: 800; color: var(--gray-900); letter-spacing: -1px; }
@@ -93,58 +78,29 @@ nav .badge {
 .bench-table td { padding: 10px 14px; border: 1px solid var(--gray-200); }
 .bench-table .highlight { background: var(--primary-light); font-weight: 600; color: var(--primary); }
 .bench-table .note { font-size: 12px; color: var(--gray-400); padding-top: 8px; }
-.btn {
-  display: inline-flex; align-items: center; gap: 6px; padding: 10px 24px;
-  border: none; border-radius: 8px; font-size: 15px; font-weight: 600;
-  cursor: pointer; transition: all 0.15s; text-decoration: none;
-}
+.btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 24px; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.15s; text-decoration: none; }
 .btn-primary { background: var(--primary); color: #fff; }
 .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(79,70,229,0.3); }
 .btn-outline { background: transparent; color: var(--primary); border: 1.5px solid var(--primary); }
 .btn-outline:hover { background: var(--primary-light); }
 .btn-sm { padding: 8px 16px; font-size: 13px; }
-.modal-overlay {
-  display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4);
-  z-index: 100; align-items: flex-start; justify-content: center; overflow-y: auto;
-  padding: 40px 16px 80px;
-}
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 100; align-items: flex-start; justify-content: center; overflow-y: auto; padding: 40px 16px 80px; }
 .modal-overlay.open { display: flex; }
-.modal {
-  background: #fff; border-radius: 16px; width: 100%; max-width: 720px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.15); margin-top: 40px; overflow: hidden;
-}
-.modal-header {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 20px 24px; border-bottom: 1px solid var(--gray-200);
-}
+.modal { background: #fff; border-radius: 16px; width: 100%; max-width: 720px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); margin-top: 40px; overflow: hidden; }
+.modal-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-bottom: 1px solid var(--gray-200); }
 .modal-header h3 { font-size: 18px; font-weight: 700; color: var(--gray-900); }
-.modal-close {
-  width: 32px; height: 32px; border: none; background: var(--gray-100);
-  border-radius: 8px; font-size: 18px; cursor: pointer; color: var(--gray-400);
-  display: flex; align-items: center; justify-content: center;
-}
+.modal-close { width: 32px; height: 32px; border: none; background: var(--gray-100); border-radius: 8px; font-size: 18px; cursor: pointer; color: var(--gray-400); display: flex; align-items: center; justify-content: center; }
 .modal-close:hover { background: var(--gray-200); }
 .modal-body { padding: 24px; }
 .mtabs { display: flex; gap: 4px; background: var(--gray-100); border-radius: 10px; padding: 4px; margin-bottom: 16px; }
-.mtab {
-  flex: 1; padding: 8px 12px; border: none; background: transparent; border-radius: 8px;
-  font-size: 13px; font-weight: 500; color: var(--gray-500); cursor: pointer; transition: all 0.15s;
-}
+.mtab { flex: 1; padding: 8px 12px; border: none; background: transparent; border-radius: 8px; font-size: 13px; font-weight: 500; color: var(--gray-500); cursor: pointer; transition: all 0.15s; }
 .mtab:hover { color: var(--gray-700); }
 .mtab.active { background: #fff; color: var(--primary); box-shadow: var(--shadow); }
 .mtab-content { display: none; }
 .mtab-content.active { display: block; }
-textarea {
-  width: 100%; min-height: 180px; padding: 14px;
-  border: 1.5px solid var(--gray-200); border-radius: 8px;
-  font-family: "SF Mono", "Consolas", monospace; font-size: 13px; line-height: 1.6;
-  resize: vertical; background: var(--gray-50);
-}
+textarea { width: 100%; min-height: 180px; padding: 14px; border: 1.5px solid var(--gray-200); border-radius: 8px; font-family: "SF Mono", "Consolas", monospace; font-size: 13px; line-height: 1.6; resize: vertical; background: var(--gray-50); }
 textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(79,70,229,0.1); }
-.drop-zone {
-  border: 2px dashed var(--gray-300); border-radius: 8px; padding: 36px 24px;
-  text-align: center; cursor: pointer; transition: all 0.2s; background: var(--gray-50);
-}
+.drop-zone { border: 2px dashed var(--gray-300); border-radius: 8px; padding: 36px 24px; text-align: center; cursor: pointer; transition: all 0.2s; background: var(--gray-50); }
 .drop-zone:hover, .drop-zone.dragover { border-color: var(--primary); background: var(--primary-light); }
 .drop-zone .icon { font-size: 32px; color: var(--gray-400); }
 .drop-zone .text { font-size: 14px; color: var(--gray-500); margin-top: 8px; }
@@ -166,11 +122,7 @@ textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 
 .result-box.show { display: block; }
 .result-box .stats { font-size: 13px; color: var(--gray-500); margin-bottom: 10px; }
 .result-box .stats strong { color: var(--gray-800); }
-.result-box pre {
-  background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px;
-  padding: 14px; font-size: 12px; line-height: 1.5; max-height: 300px; overflow-y: auto;
-  font-family: "SF Mono", "Consolas", monospace;
-}
+.result-box pre { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; padding: 14px; font-size: 12px; line-height: 1.5; max-height: 300px; overflow-y: auto; font-family: "SF Mono", "Consolas", monospace; }
 footer { text-align: center; padding: 40px 24px; color: var(--gray-400); font-size: 13px; }
 footer a { color: var(--primary); text-decoration: none; }
 @media (max-width: 768px) {
@@ -178,7 +130,7 @@ footer a { color: var(--primary); text-decoration: none; }
   .hero h1 { font-size: 28px; }
   .hero .stats { gap: 24px; }
   nav { padding: 0 16px; }
-  nav .nav-links a:not(.btn):not(.lang-btn) { display: none; }
+  nav .nav-links a:not(.btn):not(.lang-select) { display: none; }
 }
 </style>
 </head>
@@ -192,13 +144,22 @@ footer a { color: var(--primary); text-decoration: none; }
   <div class="nav-links">
     <a href="#advantages" data-i18n="nav_advantages">Advantages</a>
     <span class="badge">v1.0</span>
-    <button class="lang-btn" id="langToggle" onclick="toggleLang()">🇨🇳 中文</button>
+    <select class="lang-select" id="langSelect" onchange="switchLang(this.value)">
+      <option value="en">🇬🇧 English</option>
+      <option value="zh">🇨🇳 中文</option>
+      <option value="ja">🇯🇵 日本語</option>
+      <option value="ko">🇰🇷 한국어</option>
+      <option value="es">🇪🇸 Español</option>
+      <option value="fr">🇫🇷 Français</option>
+      <option value="de">🇩🇪 Deutsch</option>
+      <option value="pt">🇧🇷 Português</option>
+      <option value="ru">🇷🇺 Русский</option>
+    </select>
     <button class="btn btn-outline btn-sm" onclick="openAPIModal()" data-i18n="nav_api">🔌 API</button>
     <button class="btn btn-primary btn-sm" onclick="openModal()" data-i18n="nav_use">🚀 Use Tool</button>
   </div>
 </nav>
 
-<!-- ════ Hero ════ -->
 <div class="hero">
   <div class="container">
     <h1>🧪 <span>Pairwise</span> <span data-i18n="hero_title">Test Case Generator</span></h1>
@@ -212,33 +173,15 @@ footer a { color: var(--primary); text-decoration: none; }
   </div>
 </div>
 
-<!-- ════ Advantages ════ -->
 <div class="section gray" id="advantages">
   <div class="container">
     <div class="section-title" data-i18n="adv_title">⚡ Key Advantages</div>
     <div class="adv-grid">
-      <div class="adv-item">
-        <div class="icon">📐</div>
-        <h4 data-i18n="adv1_title">O(1) Cache-Aligned Memory Mapping</h4>
-        <p data-i18n="adv1_desc">Flattens pairwise coverage state into a contiguous 1D array for cache-friendly access, delivering 10x+ faster lookups.</p>
-      </div>
-      <div class="adv-item">
-        <div class="icon">⚖️</div>
-        <h4 data-i18n="adv2_title">Cardinality-Aware Quadratic Weighting</h4>
-        <p data-i18n="adv2_desc">Static weights W(i,j) = (Lᵢ × Lⱼ)² prioritize high-cardinality parameter pairs, significantly improving compression.</p>
-      </div>
-      <div class="adv-item">
-        <div class="icon">⚡</div>
-        <h4 data-i18n="adv3_title">OpenMP Parallel Acceleration</h4>
-        <p data-i18n="adv3_desc">Multi-start greedy sweeps with thread-local randomness leverage all CPU cores for sub-second generation.</p>
-      </div>
-      <div class="adv-item">
-        <div class="icon">📊</div>
-        <h4 data-i18n="adv4_title">Industry-Leading Compression</h4>
-        <p data-i18n="adv4_desc">Across 100 benchmarks, QuadCA averages 933 cases — outperforming ACTS (+4%), PICT (+14%), Jenny (+14%).</p>
-      </div>
+      <div class="adv-item"><div class="icon">📐</div><h4 data-i18n="adv1_title">O(1) Cache-Aligned Memory Mapping</h4><p data-i18n="adv1_desc">Flattens pairwise coverage state into a contiguous 1D array for cache-friendly access, delivering 10x+ faster lookups.</p></div>
+      <div class="adv-item"><div class="icon">⚖️</div><h4 data-i18n="adv2_title">Cardinality-Aware Quadratic Weighting</h4><p data-i18n="adv2_desc">Static weights W(i,j) = (Lᵢ × Lⱼ)² prioritize high-cardinality parameter pairs, significantly improving compression.</p></div>
+      <div class="adv-item"><div class="icon">⚡</div><h4 data-i18n="adv3_title">OpenMP Parallel Acceleration</h4><p data-i18n="adv3_desc">Multi-start greedy sweeps with thread-local randomness leverage all CPU cores for sub-second generation.</p></div>
+      <div class="adv-item"><div class="icon">📊</div><h4 data-i18n="adv4_title">Industry-Leading Compression</h4><p data-i18n="adv4_desc">Across 100 benchmarks, QuadCA averages 933 cases — outperforming ACTS (+4%), PICT (+14%), Jenny (+14%).</p></div>
     </div>
-
     <div style="margin-top:24px;">
       <div class="bench-box">
         <div class="label" data-i18n="bench_title">📈 30-Factor Benchmark Comparison</div>
@@ -260,32 +203,23 @@ footer a { color: var(--primary); text-decoration: none; }
   </div>
 </div>
 
-<!-- ════ Footer ════ -->
 <footer>
   <p>Powered by <strong>QuadCA</strong> · Pairwise Coverage Algorithm · Alibaba Cloud FC</p>
   <p style="margin-top:4px;"><a href="mailto:your-email@example.com">Contact</a> · © 2026 QuadCA</p>
 </footer>
 
-<!-- ══════════════════ TOOL MODAL ══════════════════ -->
+<!-- Tool Modal -->
 <div class="modal-overlay" id="modal">
   <div class="modal">
-    <div class="modal-header">
-      <h3 data-i18n="modal_title">🧪 Generate Test Cases</h3>
-      <button class="modal-close" onclick="closeModal()">✕</button>
-    </div>
+    <div class="modal-header"><h3 data-i18n="modal_title">🧪 Generate Test Cases</h3><button class="modal-close" onclick="closeModal()">✕</button></div>
     <div class="modal-body">
-      <div class="api-row">
-        <label>🔑 API Key</label>
-        <input type="text" id="apiKey" placeholder="Enter API Key (paid users)">
-      </div>
+      <div class="api-row"><label>🔑 API Key</label><input type="text" id="apiKey" data-i18n="modal_ph" placeholder="Enter API Key (paid users)"></div>
       <div class="mtabs">
         <button class="mtab active" data-tab="paste" data-i18n="tab_paste">⌨️ Paste</button>
         <button class="mtab" data-tab="upload" data-i18n="tab_upload">📁 Upload</button>
         <button class="mtab" data-tab="sample" data-i18n="tab_sample">📋 Sample</button>
       </div>
-      <div class="mtab-content active" id="tab-paste">
-        <textarea id="csvInput" placeholder="Browser,OS,Language,Screen&#10;Chrome,Windows,English,1080p&#10;Firefox,macOS,Chinese,720p&#10;Safari,Linux,Japanese,4K&#10;Edge,,French,"></textarea>
-      </div>
+      <div class="mtab-content active" id="tab-paste"><textarea id="csvInput" placeholder="Browser,OS,Language,Screen&#10;Chrome,Windows,English,1080p&#10;Firefox,macOS,Chinese,720p&#10;Safari,Linux,Japanese,4K&#10;Edge,,French,"></textarea></div>
       <div class="mtab-content" id="tab-upload">
         <div class="drop-zone" id="dropZone">
           <div class="icon">📂</div>
@@ -295,15 +229,10 @@ footer a { color: var(--primary); text-decoration: none; }
         </div>
       </div>
       <div class="mtab-content" id="tab-sample">
-        <p style="font-size:13px;color:var(--gray-500);margin-bottom:10px;" data-i18n="sample_desc">First row: factor names. Following rows: level values for each factor. Different factors may have different numbers of levels.</p>
+        <p style="font-size:13px;color:var(--gray-500);margin-bottom:10px;" data-i18n="sample_desc">First row: factor names. Following rows: level values. Different factors may have different numbers of levels.</p>
         <table class="bench-table" style="font-size:12px;margin-bottom:10px;">
           <thead><tr><th>Browser</th><th>OS</th><th>Language</th><th>Screen</th></tr></thead>
-          <tbody>
-            <tr><td>Chrome</td><td>Windows</td><td>English</td><td>1080p</td></tr>
-            <tr><td>Firefox</td><td>macOS</td><td>Chinese</td><td>720p</td></tr>
-            <tr><td>Safari</td><td>Linux</td><td>Japanese</td><td>4K</td></tr>
-            <tr><td>Edge</td><td></td><td>French</td><td></td></tr>
-          </tbody>
+          <tbody><tr><td>Chrome</td><td>Windows</td><td>English</td><td>1080p</td></tr><tr><td>Firefox</td><td>macOS</td><td>Chinese</td><td>720p</td></tr><tr><td>Safari</td><td>Linux</td><td>Japanese</td><td>4K</td></tr><tr><td>Edge</td><td></td><td>French</td><td></td></tr></tbody>
         </table>
         <button class="btn btn-secondary btn-sm" onclick="loadSample()" data-i18n="sample_btn">📋 Use this sample</button>
       </div>
@@ -312,10 +241,7 @@ footer a { color: var(--primary); text-decoration: none; }
         <button class="btn btn-primary" id="generateBtn" onclick="generate()" data-i18n="gen_btn">🚀 Generate Test Cases</button>
         <button class="btn btn-secondary btn-sm" onclick="clearModal()" data-i18n="clear_btn">Clear</button>
       </div>
-      <div class="loading" id="loading">
-        <div class="spinner"></div>
-        <span data-i18n="loading_text">Computing optimal test suite...</span>
-      </div>
+      <div class="loading" id="loading"><div class="spinner"></div><span data-i18n="loading_text">Computing optimal test suite...</span></div>
       <div class="result-box" id="resultBox">
         <div class="stats" id="resultStats"></div>
         <div class="mbtn-row" style="margin-top:0;margin-bottom:10px;">
@@ -328,15 +254,11 @@ footer a { color: var(--primary); text-decoration: none; }
   </div>
 </div>
 
-<!-- ══════════════════ API MODAL ══════════════════ -->
+<!-- API Modal -->
 <div class="modal-overlay" id="apiModal">
   <div class="modal" style="max-width:800px;">
-    <div class="modal-header">
-      <h3>🔌 API <span data-i18n="api_title">Documentation</span></h3>
-      <button class="modal-close" onclick="closeAPIModal()">✕</button>
-    </div>
+    <div class="modal-header"><h3>🔌 <span data-i18n="api_title">Documentation</span></h3><button class="modal-close" onclick="closeAPIModal()">✕</button></div>
     <div class="modal-body" style="max-height:70vh;overflow-y:auto;">
-
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;">
         <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:16px;">
           <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:8px;" data-i18n="api_endpoint">📡 Endpoint</div>
@@ -349,11 +271,7 @@ footer a { color: var(--primary); text-decoration: none; }
         </div>
         <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:16px;">
           <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:8px;" data-i18n="api_success">✅ Success (200)</div>
-          <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:6px;padding:10px;font-size:12px;font-family:'SF Mono','Consolas',monospace;overflow-x:auto;">Content-Type: text/csv
-
-Browser,OS,Language
-Chrome,macOS,Chinese
-Firefox,Windows,Japanese</pre>
+          <pre style="background:var(--gray-900);color:#e5e7eb;border-radius:6px;padding:10px;font-size:12px;font-family:'SF Mono','Consolas',monospace;overflow-x:auto;">Content-Type: text/csv\n\nBrowser,OS,Language\nChrome,macOS,Chinese\nFirefox,Windows,Japanese</pre>
         </div>
         <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:16px;">
           <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:8px;" data-i18n="api_error">❌ Error (400/500)</div>
@@ -361,7 +279,6 @@ Firefox,Windows,Japanese</pre>
 { "error": "Computation timeout" }</pre>
         </div>
       </div>
-
       <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:16px;margin-bottom:16px;">
         <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:10px;" data-i18n="api_examples">📐 Examples</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
@@ -395,7 +312,6 @@ curl -X POST -H "Content-Type: application/json" \
           </div>
         </div>
       </div>
-
       <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:16px;margin-bottom:16px;">
         <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:10px;" data-i18n="api_cicd">⚙️ CI/CD Integration</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
@@ -430,7 +346,6 @@ stage('Run tests') {
           </div>
         </div>
       </div>
-
       <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:16px;">
         <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:10px;" data-i18n="api_input">📋 Input Format</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
@@ -453,7 +368,6 @@ Edge,,French,</pre>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
@@ -461,163 +375,225 @@ Edge,,French,</pre>
 <script>
 const FC_API_URL = 'https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run';
 let uploadedFile = null;
-let currentLang = 'en';
 
-// ── i18n Dictionary ──
 const i18n = {
   en: {
-    nav_advantages: 'Advantages',
-    nav_api: '🔌 API',
-    nav_use: '🚀 Use Tool',
-    hero_title: 'Test Case Generator',
-    hero_desc: 'Define factors and levels, automatically generate the minimal test suite covering all pairwise combinations. Based on peer-reviewed algorithm, 4%–38% higher compression than leading tools.',
-    stat_factors: 'Max Factors',
-    stat_levels: 'Levels per Factor',
-    stat_avg: 'Avg Cases (30 factors)',
-    stat_vs: 'vs ACTS',
+    nav_advantages: 'Advantages', nav_api: '🔌 API', nav_use: '🚀 Use Tool',
+    hero_title: 'Test Case Generator', hero_desc: 'Define factors and levels, automatically generate the minimal test suite covering all pairwise combinations. Based on peer-reviewed algorithm, 4%–38% higher compression than leading tools.',
+    stat_factors: 'Max Factors', stat_levels: 'Levels per Factor', stat_avg: 'Avg Cases (30 factors)', stat_vs: 'vs ACTS',
     adv_title: '⚡ Key Advantages',
-    adv1_title: 'O(1) Cache-Aligned Memory Mapping',
-    adv1_desc: 'Flattens pairwise coverage state into a contiguous 1D array for cache-friendly access, delivering 10x+ faster lookups.',
-    adv2_title: 'Cardinality-Aware Quadratic Weighting',
-    adv2_desc: 'Static weights W(i,j) = (Lᵢ × Lⱼ)² prioritize high-cardinality parameter pairs, significantly improving compression.',
-    adv3_title: 'OpenMP Parallel Acceleration',
-    adv3_desc: 'Multi-start greedy sweeps with thread-local randomness leverage all CPU cores for sub-second generation.',
-    adv4_title: 'Industry-Leading Compression',
-    adv4_desc: 'Across 100 benchmarks, QuadCA averages 933 cases — outperforming ACTS (+4%), PICT (+14%), Jenny (+14%).',
-    bench_title: '📈 30-Factor Benchmark Comparison',
-    bench_tool: 'Tool',
-    bench_mean: 'Mean Suite Size',
-    bench_vs: 'vs QuadCA',
-    bench_note: 'All differences statistically significant (p < 10⁻¹⁶, Wilcoxon signed-rank test)',
-    modal_title: '🧪 Generate Test Cases',
-    tab_paste: '⌨️ Paste',
-    tab_upload: '📁 Upload',
-    tab_sample: '📋 Sample',
+    adv1_title: 'O(1) Cache-Aligned Memory Mapping', adv1_desc: 'Flattens pairwise coverage state into a contiguous 1D array for cache-friendly access, delivering 10x+ faster lookups.',
+    adv2_title: 'Cardinality-Aware Quadratic Weighting', adv2_desc: 'Static weights W(i,j) = (Lᵢ × Lⱼ)² prioritize high-cardinality parameter pairs, significantly improving compression.',
+    adv3_title: 'OpenMP Parallel Acceleration', adv3_desc: 'Multi-start greedy sweeps with thread-local randomness leverage all CPU cores for sub-second generation.',
+    adv4_title: 'Industry-Leading Compression', adv4_desc: 'Across 100 benchmarks, QuadCA averages 933 cases — outperforming ACTS (+4%), PICT (+14%), Jenny (+14%).',
+    bench_title: '📈 30-Factor Benchmark Comparison', bench_tool: 'Tool', bench_mean: 'Mean Suite Size', bench_vs: 'vs QuadCA', bench_note: 'All differences statistically significant (p < 10⁻¹⁶, Wilcoxon signed-rank test)',
+    modal_title: '🧪 Generate Test Cases', modal_ph: 'Enter API Key (paid users)',
+    tab_paste: '⌨️ Paste', tab_upload: '📁 Upload', tab_sample: '📋 Sample',
     drop_text: 'Drop CSV file here, or <strong>click to select</strong>',
-    sample_desc: 'First row: factor names. Following rows: level values for each factor. Different factors may have different numbers of levels.',
-    sample_btn: '📋 Use this sample',
-    gen_btn: '🚀 Generate Test Cases',
-    clear_btn: 'Clear',
-    loading_text: 'Computing optimal test suite...',
-    download_btn: '⬇️ Download CSV',
-    copy_btn: '📋 Copy',
-    api_title: 'Documentation',
-    api_endpoint: '📡 Endpoint',
-    api_format: '📦 Request Format',
-    api_format_desc: 'Content-Type: application/json or text/plain',
-    api_success: '✅ Success (200)',
-    api_error: '❌ Error (400/500)',
-    api_examples: '📐 Examples',
-    api_example_json: 'JSON (recommended)',
-    api_example_file: 'File Upload / API Key',
-    api_cicd: '⚙️ CI/CD Integration',
-    api_input: '📋 Input Format',
-    api_input_rules: 'CSV Rules',
-    input_rule1: 'First row: factor names (header)',
-    input_rule2: 'Following rows: level values',
-    input_rule3: 'Different factors may have different level counts',
-    input_rule4: 'At least 2 factors required',
-    api_input_example: 'Example',
-    err_empty: 'Please enter or upload CSV content',
-    err_rows: 'At least 2 rows required (header + 1 level)',
-    err_cols: 'At least 2 factors (columns) required',
-    err_file: 'Please select a CSV or TXT file',
-    err_read: 'Unable to read file',
-    modal_ph: 'Enter API Key (paid users)',
+    sample_desc: 'First row: factor names. Following rows: level values. Different factors may have different numbers of levels.',
+    sample_btn: '📋 Use this sample', gen_btn: '🚀 Generate Test Cases', clear_btn: 'Clear',
+    loading_text: 'Computing optimal test suite...', download_btn: '⬇️ Download CSV', copy_btn: '📋 Copy',
+    api_title: 'Documentation', api_endpoint: '📡 Endpoint', api_format: '📦 Request Format', api_format_desc: 'Content-Type: application/json or text/plain',
+    api_success: '✅ Success (200)', api_error: '❌ Error (400/500)', api_examples: '📐 Examples',
+    api_example_json: 'JSON (recommended)', api_example_file: 'File Upload / API Key', api_cicd: '⚙️ CI/CD Integration',
+    api_input: '📋 Input Format', api_input_rules: 'CSV Rules', input_rule1: 'First row: factor names (header)', input_rule2: 'Following rows: level values', input_rule3: 'Different factors may have different level counts', input_rule4: 'At least 2 factors required', api_input_example: 'Example',
+    err_empty: 'Please enter or upload CSV content', err_rows: 'At least 2 rows required (header + 1 level)', err_cols: 'At least 2 factors (columns) required', err_file: 'Please select a CSV or TXT file', err_read: 'Unable to read file'
   },
   zh: {
-    nav_advantages: '优势',
-    nav_api: '🔌 API',
-    nav_use: '🚀 使用工具',
-    hero_title: '测试用例生成器',
-    hero_desc: '输入因子与水平定义，自动生成覆盖所有成对组合的最小测试用例集。基于学术论文算法，比同类工具压缩率提升 4%–38%。',
-    stat_factors: '最大因子数',
-    stat_levels: '每因子水平数',
-    stat_avg: '平均用例数（30因子）',
-    stat_vs: '优于 ACTS',
+    nav_advantages: '优势', nav_api: '🔌 API', nav_use: '🚀 使用工具',
+    hero_title: '测试用例生成器', hero_desc: '输入因子与水平定义，自动生成覆盖所有成对组合的最小测试用例集。基于学术论文算法，比同类工具压缩率提升 4%–38%。',
+    stat_factors: '最大因子数', stat_levels: '每因子水平数', stat_avg: '平均用例数（30因子）', stat_vs: '优于 ACTS',
     adv_title: '⚡ 核心优势',
-    adv1_title: 'O(1) 缓存对齐内存映射',
-    adv1_desc: '将 pairwise 覆盖状态扁平化为连续一维数组，缓存友好，访问速度提升 10 倍以上。',
-    adv2_title: '基数感知二次加权',
-    adv2_desc: '静态权重 W(i,j) = (Lᵢ × Lⱼ)²，优先覆盖高基数参数对，显著提升压缩率。',
-    adv3_title: 'OpenMP 多核并行',
-    adv3_desc: '多起点贪心扫描 + 线程级局部随机数，充分利用多核 CPU 算力，秒级生成。',
-    adv4_title: '业界领先的压缩率',
-    adv4_desc: '在 100 组基准测试中，平均用例数 933，优于 ACTS（+4%）、PICT（+14%）、Jenny（+14%）。',
-    bench_title: '📈 30 因子基准测试对比',
-    bench_tool: '工具',
-    bench_mean: '平均用例数',
-    bench_vs: '对比 QuadCA',
-    bench_note: '所有差异统计显著（p < 10⁻¹⁶, Wilcoxon 符号秩检验）',
-    modal_title: '🧪 生成测试用例',
-    tab_paste: '⌨️ 粘贴',
-    tab_upload: '📁 上传',
-    tab_sample: '📋 示例',
+    adv1_title: 'O(1) 缓存对齐内存映射', adv1_desc: '将 pairwise 覆盖状态扁平化为连续一维数组，缓存友好，访问速度提升 10 倍以上。',
+    adv2_title: '基数感知二次加权', adv2_desc: '静态权重 W(i,j) = (Lᵢ × Lⱼ)²，优先覆盖高基数参数对，显著提升压缩率。',
+    adv3_title: 'OpenMP 多核并行', adv3_desc: '多起点贪心扫描 + 线程级局部随机数，充分利用多核 CPU 算力，秒级生成。',
+    adv4_title: '业界领先的压缩率', adv4_desc: '在 100 组基准测试中，平均用例数 933，优于 ACTS（+4%）、PICT（+14%）、Jenny（+14%）。',
+    bench_title: '📈 30 因子基准测试对比', bench_tool: '工具', bench_mean: '平均用例数', bench_vs: '对比 QuadCA', bench_note: '所有差异统计显著（p < 10⁻¹⁶, Wilcoxon 符号秩检验）',
+    modal_title: '🧪 生成测试用例', modal_ph: '付费用户输入 API Key',
+    tab_paste: '⌨️ 粘贴', tab_upload: '📁 上传', tab_sample: '📋 示例',
     drop_text: '拖拽文件到此处，或 <strong>点击选择</strong>',
     sample_desc: '第一行因子名，后续行每个因子的水平值。不同因子水平数可不同。',
-    sample_btn: '📋 使用此示例',
-    gen_btn: '🚀 生成测试用例',
-    clear_btn: '清空',
-    loading_text: '正在计算最优测试用例集...',
-    download_btn: '⬇️ 下载 CSV',
-    copy_btn: '📋 复制',
-    api_title: '文档',
-    api_endpoint: '📡 接口地址',
-    api_format: '📦 请求格式',
-    api_format_desc: 'Content-Type: application/json 或 text/plain',
-    api_success: '✅ 成功响应 (200)',
-    api_error: '❌ 错误响应 (400/500)',
-    api_examples: '📐 请求示例',
-    api_example_json: 'JSON 格式（推荐）',
-    api_example_file: '文件上传 / 带 API Key',
-    api_cicd: '⚙️ CI/CD 集成',
-    api_input: '📋 输入格式说明',
-    api_input_rules: 'CSV 格式规范',
-    input_rule1: '第一行：因子名称（表头）',
-    input_rule2: '后续行：每个因子的水平值',
-    input_rule3: '不同因子水平数可不同',
-    input_rule4: '至少需要 2 个因子',
-    api_input_example: '输入示例',
-    err_empty: '请先输入或上传 CSV 内容',
-    err_rows: '至少需要 2 行（表头 + 1 个水平值）',
-    err_cols: '至少需要 2 个因子（列）',
-    err_file: '请选择 CSV 或 TXT 文件',
-    err_read: '无法读取文件内容',
-    modal_ph: '付费用户在此输入 API Key',
+    sample_btn: '📋 使用此示例', gen_btn: '🚀 生成测试用例', clear_btn: '清空',
+    loading_text: '正在计算最优测试用例集...', download_btn: '⬇️ 下载 CSV', copy_btn: '📋 复制',
+    api_title: '文档', api_endpoint: '📡 接口地址', api_format: '📦 请求格式', api_format_desc: 'Content-Type: application/json 或 text/plain',
+    api_success: '✅ 成功响应 (200)', api_error: '❌ 错误响应 (400/500)', api_examples: '📐 请求示例',
+    api_example_json: 'JSON 格式（推荐）', api_example_file: '文件上传 / 带 API Key', api_cicd: '⚙️ CI/CD 集成',
+    api_input: '📋 输入格式说明', api_input_rules: 'CSV 格式规范', input_rule1: '第一行：因子名称（表头）', input_rule2: '后续行：每个因子的水平值', input_rule3: '不同因子水平数可不同', input_rule4: '至少需要 2 个因子', api_input_example: '输入示例',
+    err_empty: '请先输入或上传 CSV 内容', err_rows: '至少需要 2 行（表头 + 1 个水平值）', err_cols: '至少需要 2 个因子（列）', err_file: '请选择 CSV 或 TXT 文件', err_read: '无法读取文件内容'
+  },
+  ja: {
+    nav_advantages: '特徴', nav_api: '🔌 API', nav_use: '🚀 使用する',
+    hero_title: 'テストケース生成器', hero_desc: '因子と水準を定義し、すべてのペアワイズ組合せをカバーする最小テストスイートを自動生成。査読済みアルゴリズムに基づき、主要ツールより 4%–38% 高い圧縮率。',
+    stat_factors: '最大因子数', stat_levels: '因子あたり水準数', stat_avg: '平均ケース数（30因子）', stat_vs: 'ACTS比',
+    adv_title: '⚡ 主な特長',
+    adv1_title: 'O(1) キャッシュ最適化メモリマッピング', adv1_desc: 'ペアワイズカバレッジ状態を連続1次元配列に平坦化し、キャッシュフレンドリーなアクセスを実現、10倍以上の検索速度。',
+    adv2_title: '基数認識2次重み付け', adv2_desc: '静的权重 W(i,j) = (Lᵢ × Lⱼ)² が高基数パラメータペアを優先し、圧縮率を大幅向上。',
+    adv3_title: 'OpenMP 並列加速', adv3_desc: 'マルチスタート貪欲法スイープとスレッドローカル乱数で全CPUコアを活用、秒未満の生成。',
+    adv4_title: '業界トップの圧縮率', adv4_desc: '100ベンチマークで平均933ケース — ACTS（+4%）、PICT（+14%）、Jenny（+14%）を凌駕。',
+    bench_title: '📈 30因子ベンチマーク比較', bench_tool: 'ツール', bench_mean: '平均スイートサイズ', bench_vs: 'QuadCA比', bench_note: 'すべて統計的に有意（p < 10⁻¹⁶, Wilcoxon符号順位検定）',
+    modal_title: '🧪 テストケース生成', modal_ph: 'API Keyを入力（有料ユーザー）',
+    tab_paste: '⌨️ 貼り付け', tab_upload: '📁 アップロード', tab_sample: '📋 サンプル',
+    drop_text: 'CSVファイルをドロップ、または <strong>クリックして選択</strong>',
+    sample_desc: '1行目：因子名。以降の行：各因子の水準値。因子によって水準数は異なっても構いません。',
+    sample_btn: '📋 このサンプルを使用', gen_btn: '🚀 テストケース生成', clear_btn: 'クリア',
+    loading_text: '最適テストスイートを計算中...', download_btn: '⬇️ CSVダウンロード', copy_btn: '📋 コピー',
+    api_title: 'ドキュメント', api_endpoint: '📡 エンドポイント', api_format: '📦 リクエスト形式', api_format_desc: 'Content-Type: application/json または text/plain',
+    api_success: '✅ 成功 (200)', api_error: '❌ エラー (400/500)', api_examples: '📐 サンプル',
+    api_example_json: 'JSON（推奨）', api_example_file: 'ファイルアップロード / API Key', api_cicd: '⚙️ CI/CD 統合',
+    api_input: '📋 入力形式', api_input_rules: 'CSV ルール', input_rule1: '1行目：因子名（ヘッダー）', input_rule2: '以降の行：水準値', input_rule3: '因子ごとに水準数は異なっても可', input_rule4: '最低2つの因子が必要', api_input_example: '入力例',
+    err_empty: 'CSV内容を入力またはアップロードしてください', err_rows: '最低2行必要（ヘッダー + 1水準）', err_cols: '最低2つの因子（列）が必要です', err_file: 'CSVまたはTXTファイルを選択してください', err_read: 'ファイルを読み取れません'
+  },
+  ko: {
+    nav_advantages: '특징', nav_api: '🔌 API', nav_use: '🚀 사용하기',
+    hero_title: '테스트 케이스 생성기', hero_desc: '요인과 수준을 정의하고 모든 페어와이즈 조합을 커버하는 최소 테스트 스위트를 자동 생성합니다. 동료 검토 알고리즘 기반, 주요 도구보다 4%–38% 높은 압축률.',
+    stat_factors: '최대 요인 수', stat_levels: '요인당 수준 수', stat_avg: '평균 케이스 수(30요인)', stat_vs: 'ACTS 대비',
+    adv_title: '⚡ 주요 장점',
+    adv1_title: 'O(1) 캐시 정렬 메모리 매핑', adv1_desc: '페어와이즈 커버리지 상태를 연속 1D 배열로 평탄화하여 캐시 친화적 액세스, 10배+ 빠른 조회.',
+    adv2_title: '카디널리티 인식 2차 가중치', adv2_desc: '정적 가중치 W(i,j) = (Lᵢ × Lⱼ)²가 높은 카디널리티 파라미터 쌍을 우선시하여 압축률을 크게 향상.',
+    adv3_title: 'OpenMP 병렬 가속', adv3_desc: '멀티스타트 그리디 스위프와 스레드 로컬 난수로 모든 CPU 코어 활용, 초 미만 생성.',
+    adv4_title: '업계 최고 압축률', adv4_desc: '100개 벤치마크에서 평균 933 케이스 — ACTS(+4%), PICT(+14%), Jenny(+14%) 능가.',
+    bench_title: '📈 30요인 벤치마크 비교', bench_tool: '도구', bench_mean: '평균 스위트 크기', bench_vs: 'QuadCA 대비', bench_note: '모든 차이 통계적으로 유의미 (p < 10⁻¹⁶, Wilcoxon 부호순위검정)',
+    modal_title: '🧪 테스트 케이스 생성', modal_ph: 'API Key 입력 (유료 사용자)',
+    tab_paste: '⌨️ 붙여넣기', tab_upload: '📁 업로드', tab_sample: '📋 샘플',
+    drop_text: 'CSV 파일을 드롭하거나 <strong>클릭하여 선택</strong>',
+    sample_desc: '첫 행: 요인 이름. 이후 행: 각 요인의 수준 값. 요인마다 수준 수가 다를 수 있습니다.',
+    sample_btn: '📋 이 샘플 사용', gen_btn: '🚀 테스트 케이스 생성', clear_btn: '지우기',
+    loading_text: '최적 테스트 스위트 계산 중...', download_btn: '⬇️ CSV 다운로드', copy_btn: '📋 복사',
+    api_title: '문서', api_endpoint: '📡 엔드포인트', api_format: '📦 요청 형식', api_format_desc: 'Content-Type: application/json 또는 text/plain',
+    api_success: '✅ 성공 (200)', api_error: '❌ 오류 (400/500)', api_examples: '📐 예제',
+    api_example_json: 'JSON (권장)', api_example_file: '파일 업로드 / API Key', api_cicd: '⚙️ CI/CD 통합',
+    api_input: '📋 입력 형식', api_input_rules: 'CSV 규칙', input_rule1: '첫 행: 요인 이름 (헤더)', input_rule2: '이후 행: 수준 값', input_rule3: '요인별 수준 수 다를 수 있음', input_rule4: '최소 2개 요인 필요', api_input_example: '입력 예',
+    err_empty: 'CSV 내용을 입력하거나 업로드하세요', err_rows: '최소 2행 필요 (헤더 + 1 수준)', err_cols: '최소 2개 요인 (열) 필요', err_file: 'CSV 또는 TXT 파일을 선택하세요', err_read: '파일을 읽을 수 없습니다'
+  },
+  es: {
+    nav_advantages: 'Ventajas', nav_api: '🔌 API', nav_use: '🚀 Usar',
+    hero_title: 'Generador de Casos de Prueba', hero_desc: 'Defina factores y niveles, genere automáticamente el conjunto de pruebas mínimo que cubra todas las combinaciones por pares. Basado en algoritmo revisado por pares, 4%–38% más compresión que herramientas líderes.',
+    stat_factors: 'Máx. Factores', stat_levels: 'Niveles por Factor', stat_avg: 'Casos Prom. (30 factores)', stat_vs: 'vs ACTS',
+    adv_title: '⚡ Ventajas Clave',
+    adv1_title: 'Mapeo de Memoria Alineado con Caché O(1)', adv1_desc: 'Aplana el estado de cobertura por pares en una matriz 1D contigua para acceso amigable con caché, 10x+ más rápido.',
+    adv2_title: 'Ponderación Cuadrática por Cardinalidad', adv2_desc: 'Pesos estáticos W(i,j) = (Lᵢ × Lⱼ)² priorizan pares de alta cardinalidad, mejorando la compresión significativamente.',
+    adv3_title: 'Aceleración Paralela OpenMP', adv3_desc: 'Múltiples barridos greedy con aleatoriedad local de hilo aprovechan todos los núcleos de CPU, generación en menos de un segundo.',
+    adv4_title: 'Compresión Líder en la Industria', adv4_desc: 'En 100 benchmarks, QuadCA promedia 933 casos — superando a ACTS (+4%), PICT (+14%), Jenny (+14%).',
+    bench_title: '📈 Comparativa 30 Factores', bench_tool: 'Herramienta', bench_mean: 'Tamaño Promedio', bench_vs: 'vs QuadCA', bench_note: 'Todas las diferencias estadísticamente significativas (p < 10⁻¹⁶, prueba Wilcoxon)',
+    modal_title: '🧪 Generar Casos de Prueba', modal_ph: 'Ingrese API Key (usuarios de pago)',
+    tab_paste: '⌨️ Pegar', tab_upload: '📁 Subir', tab_sample: '📋 Ejemplo',
+    drop_text: 'Arrastre su CSV aquí, o <strong>haga clic para seleccionar</strong>',
+    sample_desc: 'Primera fila: nombres de factores. Filas siguientes: valores de nivel. Diferentes factores pueden tener diferentes números de niveles.',
+    sample_btn: '📋 Usar este ejemplo', gen_btn: '🚀 Generar Casos de Prueba', clear_btn: 'Limpiar',
+    loading_text: 'Calculando suite óptima...', download_btn: '⬇️ Descargar CSV', copy_btn: '📋 Copiar',
+    api_title: 'Documentación', api_endpoint: '📡 Endpoint', api_format: '📦 Formato de Solicitud', api_format_desc: 'Content-Type: application/json o text/plain',
+    api_success: '✅ Éxito (200)', api_error: '❌ Error (400/500)', api_examples: '📐 Ejemplos',
+    api_example_json: 'JSON (recomendado)', api_example_file: 'Subir archivo / API Key', api_cicd: '⚙️ Integración CI/CD',
+    api_input: '📋 Formato de Entrada', api_input_rules: 'Reglas CSV', input_rule1: 'Primera fila: nombres de factores (encabezado)', input_rule2: 'Filas siguientes: valores de nivel', input_rule3: 'Diferentes factores pueden tener diferentes cantidades de niveles', input_rule4: 'Se requieren al menos 2 factores', api_input_example: 'Ejemplo',
+    err_empty: 'Ingrese o suba contenido CSV', err_rows: 'Se requieren al menos 2 filas (encabezado + 1 nivel)', err_cols: 'Se requieren al menos 2 factores (columnas)', err_file: 'Seleccione un archivo CSV o TXT', err_read: 'No se puede leer el archivo'
+  },
+  fr: {
+    nav_advantages: 'Avantages', nav_api: '🔌 API', nav_use: '🚀 Utiliser',
+    hero_title: 'Générateur de Cas de Test', hero_desc: 'Définissez des facteurs et niveaux, générez automatiquement la suite de tests minimale couvrant toutes les combinaisons par paires. Basé sur un algorithme évalué par les pairs, 4%–38% de compression en plus.',
+    stat_factors: 'Max Facteurs', stat_levels: 'Niveaux par Facteur', stat_avg: 'Cas Moyens (30 facteurs)', stat_vs: 'vs ACTS',
+    adv_title: '⚡ Avantages Clés',
+    adv1_title: 'Mappage Mémoire Aligné Cache O(1)', adv1_desc: 'Aplatit l\'état de couverture par paires en un tableau 1D contigu pour un accès adapté au cache, 10x+ plus rapide.',
+    adv2_title: 'Pondération Quadratique par Cardinalité', adv2_desc: 'Poids statiques W(i,j) = (Lᵢ × Lⱼ)² priorisent les paires de haute cardinalité, améliorant significativement la compression.',
+    adv3_title: 'Accélération Parallèle OpenMP', adv3_desc: 'Multi-balayages gloutons avec aléatoire local de thread exploitent tous les cœurs CPU, génération en moins d\'une seconde.',
+    adv4_title: 'Compression Leader du Secteur', adv4_desc: 'Sur 100 benchmarks, QuadCA moyenne 933 cas — surpassant ACTS (+4%), PICT (+14%), Jenny (+14%).',
+    bench_title: '📈 Comparatif 30 Facteurs', bench_tool: 'Outil', bench_mean: 'Taille Moyenne', bench_vs: 'vs QuadCA', bench_note: 'Toutes les différences statistiquement significatives (p < 10⁻¹⁶, test Wilcoxon)',
+    modal_title: '🧪 Générer des Cas de Test', modal_ph: 'Entrez votre API Key (utilisateurs payants)',
+    tab_paste: '⌨️ Coller', tab_upload: '📁 Télécharger', tab_sample: '📋 Exemple',
+    drop_text: 'Déposez votre CSV ici, ou <strong>cliquez pour sélectionner</strong>',
+    sample_desc: 'Première ligne : noms des facteurs. Lignes suivantes : valeurs des niveaux. Différents facteurs peuvent avoir différents nombres de niveaux.',
+    sample_btn: '📋 Utiliser cet exemple', gen_btn: '🚀 Générer', clear_btn: 'Effacer',
+    loading_text: 'Calcul de la suite optimale...', download_btn: '⬇️ Télécharger CSV', copy_btn: '📋 Copier',
+    api_title: 'Documentation', api_endpoint: '📡 Endpoint', api_format: '📦 Format Requête', api_format_desc: 'Content-Type: application/json ou text/plain',
+    api_success: '✅ Succès (200)', api_error: '❌ Erreur (400/500)', api_examples: '📐 Exemples',
+    api_example_json: 'JSON (recommandé)', api_example_file: 'Upload fichier / API Key', api_cicd: '⚙️ Intégration CI/CD',
+    api_input: '📋 Format d\'Entrée', api_input_rules: 'Règles CSV', input_rule1: 'Première ligne : noms des facteurs (en-tête)', input_rule2: 'Lignes suivantes : valeurs des niveaux', input_rule3: 'Différents facteurs peuvent avoir différents nombres de niveaux', input_rule4: 'Au moins 2 facteurs requis', api_input_example: 'Exemple',
+    err_empty: 'Entrez ou téléchargez du contenu CSV', err_rows: 'Au moins 2 lignes requises (en-tête + 1 niveau)', err_cols: 'Au moins 2 facteurs (colonnes) requis', err_file: 'Sélectionnez un fichier CSV ou TXT', err_read: 'Impossible de lire le fichier'
+  },
+  de: {
+    nav_advantages: 'Vorteile', nav_api: '🔌 API', nav_use: '🚀 Nutzen',
+    hero_title: 'Testfall-Generator', hero_desc: 'Definieren Sie Faktoren und Ebenen, automatisch die minimale Testsuite generieren, die alle Paarkombinationen abdeckt. Basierend auf peer-reviewed Algorithmus, 4%–38% höhere Kompression als führende Tools.',
+    stat_factors: 'Max. Faktoren', stat_levels: 'Ebenen pro Faktor', stat_avg: 'Durchschn. Fälle (30 Faktoren)', stat_vs: 'vs ACTS',
+    adv_title: '⚡ Hauptvorteile',
+    adv1_title: 'O(1) Cache-optimierte Speicherzuordnung', adv1_desc: 'Paarweise Abdeckung in ein kontinuierliches 1D-Array abgeflacht für cache-freundlichen Zugriff, 10x+ schnellere Abfragen.',
+    adv2_title: 'Kardinalitätsbewusste Quadratische Gewichtung', adv2_desc: 'Statische Gewichte W(i,j) = (Lᵢ × Lⱼ)² priorisieren hochkardinale Parameterpaare, verbessern die Kompression erheblich.',
+    adv3_title: 'OpenMP Parallelbeschleunigung', adv3_desc: 'Multi-Start Greedy Sweeps mit Thread-lokalem Zufall nutzen alle CPU-Kerne, Generierung in unter einer Sekunde.',
+    adv4_title: 'Branchenführende Kompression', adv4_desc: 'In 100 Benchmarks durchschnittlich 933 Fälle — besser als ACTS (+4%), PICT (+14%), Jenny (+14%).',
+    bench_title: '📈 30-Faktor Benchmark-Vergleich', bench_tool: 'Tool', bench_mean: 'Durchschnittsgröße', bench_vs: 'vs QuadCA', bench_note: 'Alle Unterschiede statistisch signifikant (p < 10⁻¹⁶, Wilcoxon-Vorzeichenrangtest)',
+    modal_title: '🧪 Testfälle Generieren', modal_ph: 'API Key eingeben (zahlende Nutzer)',
+    tab_paste: '⌨️ Einfügen', tab_upload: '📁 Hochladen', tab_sample: '📋 Beispiel',
+    drop_text: 'CSV-Datei hier ablegen oder <strong>klicken zum Auswählen</strong>',
+    sample_desc: 'Erste Zeile: Faktornamen. Folgende Zeilen: Ebenenwerte. Verschiedene Faktoren können unterschiedliche Anzahlen von Ebenen haben.',
+    sample_btn: '📋 Dieses Beispiel nutzen', gen_btn: '🚀 Testfälle Generieren', clear_btn: 'Löschen',
+    loading_text: 'Berechne optimale Testsuite...', download_btn: '⬇️ CSV Herunterladen', copy_btn: '📋 Kopieren',
+    api_title: 'Dokumentation', api_endpoint: '📡 Endpunkt', api_format: '📦 Anfrageformat', api_format_desc: 'Content-Type: application/json oder text/plain',
+    api_success: '✅ Erfolg (200)', api_error: '❌ Fehler (400/500)', api_examples: '📐 Beispiele',
+    api_example_json: 'JSON (empfohlen)', api_example_file: 'Datei-Upload / API Key', api_cicd: '⚙️ CI/CD Integration',
+    api_input: '📋 Eingabeformat', api_input_rules: 'CSV Regeln', input_rule1: 'Erste Zeile: Faktornamen (Kopfzeile)', input_rule2: 'Folgende Zeilen: Ebenenwerte', input_rule3: 'Verschiedene Faktoren können unterschiedliche Ebenenanzahlen haben', input_rule4: 'Mindestens 2 Faktoren erforderlich', api_input_example: 'Beispiel',
+    err_empty: 'CSV-Inhalt eingeben oder hochladen', err_rows: 'Mindestens 2 Zeilen erforderlich (Kopfzeile + 1 Ebene)', err_cols: 'Mindestens 2 Faktoren (Spalten) erforderlich', err_file: 'CSV- oder TXT-Datei auswählen', err_read: 'Datei kann nicht gelesen werden'
+  },
+  pt: {
+    nav_advantages: 'Vantagens', nav_api: '🔌 API', nav_use: '🚀 Usar',
+    hero_title: 'Gerador de Casos de Teste', hero_desc: 'Defina fatores e níveis, gere automaticamente o conjunto de testes mínimo cobrindo todas as combinações de pares. Baseado em algoritmo revisado por pares, 4%–38% mais compressão que ferramentas líderes.',
+    stat_factors: 'Máx. Fatores', stat_levels: 'Níveis por Fator', stat_avg: 'Casos Médios (30 fatores)', stat_vs: 'vs ACTS',
+    adv_title: '⚡ Principais Vantagens',
+    adv1_title: 'Mapeamento de Memória Alinhado ao Cache O(1)', adv1_desc: 'Achata o estado de cobertura de pares em um array 1D contíguo para acesso amigável ao cache, 10x+ mais rápido.',
+    adv2_title: 'Ponderação Quadrática por Cardinalidade', adv2_desc: 'Pesos estáticos W(i,j) = (Lᵢ × Lⱼ)² priorizam pares de alta cardinalidade, melhorando significativamente a compressão.',
+    adv3_title: 'Aceleração Paralela OpenMP', adv3_desc: 'Múltiplas varreduras greedy com aleatoriedade local de thread aproveitam todos os núcleos da CPU, geração em menos de um segundo.',
+    adv4_title: 'Compressão Líder do Setor', adv4_desc: 'Em 100 benchmarks, QuadCA média 933 casos — superando ACTS (+4%), PICT (+14%), Jenny (+14%).',
+    bench_title: '📈 Comparativo 30 Fatores', bench_tool: 'Ferramenta', bench_mean: 'Tamanho Médio', bench_vs: 'vs QuadCA', bench_note: 'Todas as diferenças estatisticamente significativas (p < 10⁻¹⁶, teste Wilcoxon)',
+    modal_title: '🧪 Gerar Casos de Teste', modal_ph: 'Insira a API Key (usuários pagos)',
+    tab_paste: '⌨️ Colar', tab_upload: '📁 Enviar', tab_sample: '📋 Exemplo',
+    drop_text: 'Arraste o CSV aqui, ou <strong>clique para selecionar</strong>',
+    sample_desc: 'Primeira linha: nomes dos fatores. Linhas seguintes: valores de nível. Diferentes fatores podem ter diferentes números de níveis.',
+    sample_btn: '📋 Usar este exemplo', gen_btn: '🚀 Gerar Casos de Teste', clear_btn: 'Limpar',
+    loading_text: 'Calculando suite otimizada...', download_btn: '⬇️ Baixar CSV', copy_btn: '📋 Copiar',
+    api_title: 'Documentação', api_endpoint: '📡 Endpoint', api_format: '📦 Formato da Requisição', api_format_desc: 'Content-Type: application/json ou text/plain',
+    api_success: '✅ Sucesso (200)', api_error: '❌ Erro (400/500)', api_examples: '📐 Exemplos',
+    api_example_json: 'JSON (recomendado)', api_example_file: 'Upload de arquivo / API Key', api_cicd: '⚙️ Integração CI/CD',
+    api_input: '📋 Formato de Entrada', api_input_rules: 'Regras CSV', input_rule1: 'Primeira linha: nomes dos fatores (cabeçalho)', input_rule2: 'Linhas seguintes: valores de nível', input_rule3: 'Diferentes fatores podem ter diferentes quantidades de níveis', input_rule4: 'Pelo menos 2 fatores necessários', api_input_example: 'Exemplo',
+    err_empty: 'Insira ou envie conteúdo CSV', err_rows: 'Pelo menos 2 linhas necessárias (cabeçalho + 1 nível)', err_cols: 'Pelo menos 2 fatores (colunas) necessários', err_file: 'Selecione um arquivo CSV ou TXT', err_read: 'Não foi possível ler o arquivo'
+  },
+  ru: {
+    nav_advantages: 'Преимущества', nav_api: '🔌 API', nav_use: '🚀 Использовать',
+    hero_title: 'Генератор тестовых случаев', hero_desc: 'Определите факторы и уровни, автоматически сгенерируйте минимальный набор тестов, покрывающий все попарные комбинации. Основано на рецензируемом алгоритме, на 4%–38% выше сжатие, чем ведущие инструменты.',
+    stat_factors: 'Макс. факторов', stat_levels: 'Уровней на фактор', stat_avg: 'Среднее случаев (30 факторов)', stat_vs: 'против ACTS',
+    adv_title: '⚡ Ключевые преимущества',
+    adv1_title: 'O(1) кэш-выровненное отображение памяти', adv1_desc: 'Уплощает состояние попарного покрытия в непрерывный 1D-массив для кэш-дружественного доступа, в 10+ раз быстрее.',
+    adv2_title: 'Квадратичное взвешивание с учетом кардинальности', adv2_desc: 'Статические веса W(i,j) = (Lᵢ × Lⱼ)² отдают приоритет парам с высокой кардинальностью, значительно улучшая сжатие.',
+    adv3_title: 'Параллельное ускорение OpenMP', adv3_desc: 'Многократные жадные проходы с локальной случайностью потока используют все ядра CPU, генерация менее чем за секунду.',
+    adv4_title: 'Лидирующее сжатие в отрасли', adv4_desc: 'На 100 бенчмарках QuadCA в среднем 933 случая — превосходит ACTS (+4%), PICT (+14%), Jenny (+14%).',
+    bench_title: '📈 Сравнение 30 факторов', bench_tool: 'Инструмент', bench_mean: 'Средний размер', bench_vs: 'против QuadCA', bench_note: 'Все различия статистически значимы (p < 10⁻¹⁶, критерий Уилкоксона)',
+    modal_title: '🧪 Сгенерировать тесты', modal_ph: 'Введите API Key (платные пользователи)',
+    tab_paste: '⌨️ Вставить', tab_upload: '📁 Загрузить', tab_sample: '📋 Пример',
+    drop_text: 'Перетащите CSV сюда или <strong>нажмите для выбора</strong>',
+    sample_desc: 'Первая строка: имена факторов. Следующие строки: значения уровней. Разные факторы могут иметь разное количество уровней.',
+    sample_btn: '📋 Использовать пример', gen_btn: '🚀 Сгенерировать', clear_btn: 'Очистить',
+    loading_text: 'Вычисление оптимального набора...', download_btn: '⬇️ Скачать CSV', copy_btn: '📋 Копировать',
+    api_title: 'Документация', api_endpoint: '📡 Эндпоинт', api_format: '📦 Формат запроса', api_format_desc: 'Content-Type: application/json или text/plain',
+    api_success: '✅ Успех (200)', api_error: '❌ Ошибка (400/500)', api_examples: '📐 Примеры',
+    api_example_json: 'JSON (рекомендуется)', api_example_file: 'Загрузка файла / API Key', api_cicd: '⚙️ CI/CD интеграция',
+    api_input: '📋 Формат ввода', api_input_rules: 'Правила CSV', input_rule1: 'Первая строка: имена факторов (заголовок)', input_rule2: 'Следующие строки: значения уровней', input_rule3: 'Разные факторы могут иметь разное количество уровней', input_rule4: 'Требуется минимум 2 фактора', api_input_example: 'Пример',
+    err_empty: 'Введите или загрузите CSV содержимое', err_rows: 'Требуется минимум 2 строки (заголовок + 1 уровень)', err_cols: 'Требуется минимум 2 фактора (столбца)', err_file: 'Выберите CSV или TXT файл', err_read: 'Невозможно прочитать файл'
   }
 };
 
-function applyLang(lang) {
-  currentLang = lang;
+function switchLang(lang) {
   const t = i18n[lang];
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n;
     if (t[key] !== undefined) {
-      if (el.tagName === 'INPUT' && el.type === 'text') {
-        el.placeholder = t[key];
-      } else {
-        el.innerHTML = t[key];
-      }
+      if (el.tagName === 'INPUT' && el.type === 'text') el.placeholder = t[key];
+      else el.innerHTML = t[key];
     }
   });
-  document.getElementById('langToggle').textContent = lang === 'en' ? '🇨🇳 中文' : '🇬🇧 English';
   document.documentElement.lang = lang;
 }
 
-function toggleLang() {
-  applyLang(currentLang === 'en' ? 'zh' : 'en');
-}
-
-// Apply EN on load
-applyLang('en');
-
-// ── Modal ──
+// ── Modals ──
 function openModal() { document.getElementById('modal').classList.add('open'); document.body.style.overflow = 'hidden'; }
 function closeModal() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow = ''; }
 document.getElementById('modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-// API Modal
 function openAPIModal() { document.getElementById('apiModal').classList.add('open'); document.body.style.overflow = 'hidden'; }
 function closeAPIModal() { document.getElementById('apiModal').classList.remove('open'); document.body.style.overflow = ''; }
 document.getElementById('apiModal').addEventListener('click', e => { if (e.target === e.currentTarget) closeAPIModal(); });
@@ -640,43 +616,36 @@ const fileName = document.getElementById('fileName');
 dropZone.addEventListener('click', () => fileInput.click());
 dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
 dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
-dropZone.addEventListener('drop', e => {
-  e.preventDefault(); dropZone.classList.remove('dragover');
-  if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
-});
+dropZone.addEventListener('drop', e => { e.preventDefault(); dropZone.classList.remove('dragover'); if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]); });
 fileInput.addEventListener('change', () => { if (fileInput.files.length > 0) handleFile(fileInput.files[0]); });
 function handleFile(file) {
-  if (!file.name.match(/\.(csv|txt)$/i)) { showError(i18n[currentLang].err_file); return; }
-  uploadedFile = file;
-  fileName.textContent = file.name + ' (' + (file.size / 1024).toFixed(1) + ' KB)';
-  fileInfo.classList.add('show'); hideError();
+  const lang = document.getElementById('langSelect').value;
+  if (!file.name.match(/\.(csv|txt)$/i)) { showError(i18n[lang].err_file); return; }
+  uploadedFile = file; fileName.textContent = file.name + ' (' + (file.size / 1024).toFixed(1) + ' KB)'; fileInfo.classList.add('show'); hideError();
 }
 
 function loadSample() {
   document.getElementById('csvInput').value = 'Browser,OS,Language,Screen\nChrome,Windows,English,1080p\nFirefox,macOS,Chinese,720p\nSafari,Linux,Japanese,4K\nEdge,,French,';
   document.querySelectorAll('.mtab')[0].click();
 }
-
 function clearModal() {
-  document.getElementById('csvInput').value = '';
-  document.getElementById('resultBox').classList.remove('show');
-  document.getElementById('errorBox').classList.remove('show');
-  document.getElementById('loading').classList.remove('show');
+  document.getElementById('csvInput').value = ''; document.getElementById('resultBox').classList.remove('show');
+  document.getElementById('errorBox').classList.remove('show'); document.getElementById('loading').classList.remove('show');
   fileInfo.classList.remove('show'); uploadedFile = null; fileInput.value = '';
 }
-
 function showError(msg) { const el = document.getElementById('errorBox'); el.textContent = '❌ ' + msg; el.classList.add('show'); }
 function hideError() { document.getElementById('errorBox').classList.remove('show'); }
 
 async function generate() {
   hideError(); document.getElementById('resultBox').classList.remove('show');
+  const lang = document.getElementById('langSelect').value;
   let csv = document.getElementById('csvInput').value.trim();
-  if (!csv && uploadedFile) { try { csv = (await uploadedFile.text()).trim(); } catch(e) { showError(i18n[currentLang].err_read); return; } }
-  if (!csv) { showError(i18n[currentLang].err_empty); return; }
+  if (!csv && uploadedFile) { try { csv = (await uploadedFile.text()).trim(); } catch(e) { showError(i18n[lang].err_read); return; } }
+  if (!csv) { showError(i18n[lang].err_empty); return; }
   const lines = csv.split('\n').filter(l => l.trim());
-  if (lines.length < 2) { showError(i18n[currentLang].err_rows); return; }
+  if (lines.length < 2) { showError(i18n[lang].err_rows); return; }
   const cols = lines[0].split(',').filter(c => c.trim());
-  if (cols.length < 2) { showError(i18n[currentLang].err_cols); return; }
+  if (cols.length < 2) { showError(i18n[lang].err_cols); return; }
 
   const apiKey = document.getElementById('apiKey').value.trim();
   const btn = document.getElementById('generateBtn'); btn.disabled = true;
