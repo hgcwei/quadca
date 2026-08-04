@@ -3,151 +3,567 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pairwise 组合测试用例生成器</title>
+<title>QuadCA · Pairwise 测试用例生成器</title>
 <style>
+:root {
+  --primary: #4f46e5;
+  --primary-dark: #3730a3;
+  --primary-light: #eef2ff;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  --green: #10b981;
+  --red: #ef4444;
+  --orange: #f59e0b;
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-lg: 0 4px 24px rgba(0,0,0,0.08);
+}
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: -apple-system, "Microsoft YaHei", "PingFang SC", sans-serif;
-       background: linear-gradient(135deg, #f0f4ff 0%, #e8ecf4 100%);
-       min-height: 100vh; padding: 40px 20px; }
-.container { max-width: 860px; margin: 0 auto; }
-.card { background: #fff; border-radius: 16px; padding: 36px;
-        box-shadow: 0 4px 24px rgba(0,0,0,0.06); margin-bottom: 24px; }
-h1 { font-size: 28px; color: #1a1a2e; margin-bottom: 8px; }
-.subtitle { color: #6b7280; font-size: 15px; margin-bottom: 20px; }
-textarea { width: 100%; height: 180px; font-family: monospace; font-size: 14px; padding: 14px;
-           border: 1.5px solid #d1d5db; border-radius: 10px; }
-textarea:focus { outline: none; border-color: #4f46e5; }
-input[type="text"] { width: 100%; padding: 10px 14px; font-size: 14px; border: 1.5px solid #d1d5db; border-radius: 8px; }
-input[type="text"]:focus { outline: none; border-color: #4f46e5; }
-.btn-row { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
-.btn { border: none; padding: 12px 36px; font-size: 16px; border-radius: 10px; cursor: pointer; font-weight: 500; }
-.btn-primary { background: linear-gradient(135deg, #4f46e5, #6366f1); color: #fff; }
-.btn-primary:hover { opacity: 0.9; }
-.btn-secondary { background: #fff; color: #374151; border: 1.5px solid #d1d5db; }
-pre { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; font-size: 13px; max-height: 400px; overflow-y: auto; }
-.footer { text-align: center; color: #9ca3af; font-size: 13px; padding: 20px; }
-#result { display: none; }
-#result.show { display: block; }
-.loading { display: none; color: #4f46e5; margin: 12px 0; font-weight: bold; }
-.loading.show { display: block; }
-.api-key-row { display: flex; gap: 8px; align-items: center; margin-bottom: 12px; }
-.api-key-row label { font-size: 14px; color: #374151; white-space: nowrap; font-weight: 500; }
-.api-key-row input { flex: 1; }
-.api-key-hint { font-size: 12px; color: #9ca3af; margin-top: 4px; }
+body {
+  font-family: -apple-system, "Inter", "Microsoft YaHei", "PingFang SC", sans-serif;
+  background: var(--gray-50);
+  color: var(--gray-800);
+  min-height: 100vh;
+}
+
+/* ── Nav ── */
+nav {
+  background: #fff;
+  border-bottom: 1px solid var(--gray-200);
+  padding: 0 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+nav .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--gray-900);
+  text-decoration: none;
+}
+nav .brand span { color: var(--primary); }
+nav .badge {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+}
+
+/* ── Container ── */
+.container { max-width: 960px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ── Hero ── */
+.hero { margin-bottom: 40px; }
+.hero h1 { font-size: 32px; font-weight: 800; color: var(--gray-900); letter-spacing: -0.5px; }
+.hero p { color: var(--gray-500); font-size: 16px; margin-top: 8px; line-height: 1.6; }
+
+/* ── Card ── */
+.card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--gray-200);
+  padding: 32px;
+  margin-bottom: 24px;
+}
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--gray-700);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── Tabs ── */
+.tabs { display: flex; gap: 4px; background: var(--gray-100); border-radius: 10px; padding: 4px; margin-bottom: 24px; }
+.tab {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gray-500);
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.tab:hover { color: var(--gray-700); }
+.tab.active { background: #fff; color: var(--primary); box-shadow: var(--shadow); }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* ── Drop zone ── */
+.drop-zone {
+  border: 2px dashed var(--gray-300);
+  border-radius: var(--radius);
+  padding: 48px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--gray-50);
+}
+.drop-zone:hover, .drop-zone.dragover {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+.drop-zone .icon { font-size: 40px; margin-bottom: 12px; color: var(--gray-400); }
+.drop-zone .text { font-size: 15px; color: var(--gray-500); }
+.drop-zone .text strong { color: var(--primary); }
+.drop-zone .hint { font-size: 13px; color: var(--gray-400); margin-top: 6px; }
+.drop-zone .file-info { display: none; margin-top: 16px; padding: 12px 16px; background: var(--primary-light); border-radius: 8px; color: var(--primary); font-size: 14px; font-weight: 500; }
+.drop-zone .file-info.show { display: inline-block; }
+
+/* ── Textarea ── */
+textarea {
+  width: 100%;
+  min-height: 200px;
+  padding: 16px;
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius);
+  font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  resize: vertical;
+  transition: border-color 0.15s;
+  background: var(--gray-50);
+}
+textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(79,70,229,0.1); }
+
+/* ── API Key Row ── */
+.api-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--gray-50);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid var(--gray-200);
+}
+.api-row label { font-size: 14px; font-weight: 500; color: var(--gray-600); white-space: nowrap; }
+.api-row input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--gray-200);
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fff;
+  transition: border-color 0.15s;
+}
+.api-row input:focus { outline: none; border-color: var(--primary); }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-decoration: none;
+}
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(79,70,229,0.25); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.btn-secondary { background: var(--gray-100); color: var(--gray-700); }
+.btn-secondary:hover { background: var(--gray-200); }
+.btn-success { background: var(--green); color: #fff; }
+.btn-success:hover { opacity: 0.9; }
+.btn-row { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+
+/* ── Loading ── */
+.loading { display: none; align-items: center; gap: 10px; padding: 16px 0; color: var(--primary); font-weight: 500; }
+.loading.show { display: flex; }
+.spinner { width: 20px; height: 20px; border: 2.5px solid var(--gray-200); border-top-color: var(--primary); border-radius: 50%; animation: spin 0.6s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Result ── */
+#result-card { display: none; }
+#result-card.show { display: block; }
+.result-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.result-stats { font-size: 14px; color: var(--gray-500); }
+.result-stats strong { color: var(--gray-800); }
+pre.result-content {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 13px;
+  line-height: 1.5;
+  max-height: 400px;
+  overflow-y: auto;
+  font-family: "SF Mono", "Consolas", monospace;
+}
+
+/* ── Error ── */
+.error-box { display: none; padding: 14px 16px; background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; color: var(--red); font-size: 14px; margin-bottom: 16px; }
+.error-box.show { display: block; }
+
+/* ── Footer ── */
+footer {
+  text-align: center;
+  padding: 40px 24px;
+  color: var(--gray-400);
+  font-size: 13px;
+  border-top: 1px solid var(--gray-200);
+}
+footer a { color: var(--primary); text-decoration: none; }
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .container { padding: 24px 16px 60px; }
+  .hero h1 { font-size: 24px; }
+  .card { padding: 20px; }
+  .drop-zone { padding: 32px 16px; }
+  .tabs { flex-direction: column; }
+}
+
+/* ── Example Table ── */
+.example-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 12px 0;
+}
+.example-table th {
+  background: var(--gray-100);
+  font-weight: 600;
+  padding: 8px 12px;
+  text-align: left;
+  border: 1px solid var(--gray-200);
+}
+.example-table td {
+  padding: 8px 12px;
+  border: 1px solid var(--gray-200);
+}
+.example-table tr:hover { background: var(--gray-50); }
 </style>
 </head>
 <body>
+
+<nav>
+  <a href="/" class="brand">
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect width="28" height="28" rx="6" fill="#4f46e5"/><path d="M8 14L12 18L20 10" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    QuadCA <span>·</span> Pairwise 生成器
+  </a>
+  <span class="badge">v1.0</span>
+</nav>
+
 <div class="container">
-    <div class="card">
-        <h1>🧪 Pairwise 组合测试用例生成器</h1>
-        <p class="subtitle">自动生成覆盖所有成对组合（正交/Pairwise）的测试用例</p>
-        <div style="background:#fefce8;border:1px solid #fde68a;border-radius:10px;padding:14px;color:#92400e;font-size:14px;margin:12px 0;">
-            <strong>💡 输入格式：</strong>第一行因子名，后续每行每个因子的水平值
-        </div>
-        <div class="api-key-row">
-            <label for="apiKey">🔑 API Key：</label>
-            <input type="text" id="apiKey" placeholder="付费用户请在此输入API Key（免费用户留空）">
-        </div>
-        <div class="api-key-hint">免费体验每月 50 次，付费用户可享不限次数。购买联系：<a href="mailto:your-email@example.com">your-email@example.com</a></div>
-        <h3 style="margin-top:20px;">⌨️ 粘贴CSV内容</h3>
-        <form id="csvForm" onsubmit="return submitForm(event)">
-            <textarea id="csvText" placeholder="Browser,OS,Language,Screen&#10;Chrome,Windows,English,1080p&#10;Firefox,macOS,Chinese,720p&#10;Safari,Linux,Japanese,4K&#10;Edge,,French,"></textarea>
-            <div class="btn-row">
-                <button type="submit" class="btn btn-primary">🚀 生成测试用例</button>
-                <button type="button" class="btn btn-secondary" onclick="loadExample()">📋 加载示例</button>
-            </div>
-        </form>
+
+  <div class="hero">
+    <h1>🧪 组合测试用例生成器</h1>
+    <p>上传因子水平定义表，自动生成覆盖所有成对组合（Pairwise）的测试用例，最大化测试覆盖率、最小化用例数量。</p>
+  </div>
+
+  <!-- API Key -->
+  <div class="api-row">
+    <label>🔑 API Key</label>
+    <input type="text" id="apiKey" placeholder="付费用户在此输入 API Key（免费用户留空）">
+    <span style="font-size:13px;color:var(--gray-400);white-space:nowrap;">免费 50 次/月</span>
+  </div>
+
+  <!-- Input Card -->
+  <div class="card">
+    <div class="card-title">📥 输入因子定义</div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab active" data-tab="paste">⌨️ 粘贴 CSV</button>
+      <button class="tab" data-tab="upload">📁 上传文件</button>
+      <button class="tab" data-tab="sample">📋 示例</button>
     </div>
-    <div id="loading" class="loading">⏳ 正在计算优化用例集，请稍候...</div>
-    <div id="result" class="card">
-        <h3>✅ 生成结果</h3>
-        <div class="btn-row" style="margin-bottom:12px">
-            <a id="downloadLink" class="btn btn-primary" style="text-decoration:none">⬇️ 下载 CSV 文件</a>
-            <button class="btn btn-secondary" onclick="copyResult()">📋 复制文本</button>
-        </div>
-        <pre id="resultContent"></pre>
+
+    <!-- Tab: Paste -->
+    <div class="tab-content active" id="tab-paste">
+      <textarea id="csvInput" placeholder="Browser,OS,Language,Screen&#10;Chrome,Windows,English,1080p&#10;Firefox,macOS,Chinese,720p&#10;Safari,Linux,Japanese,4K&#10;Edge,,French,"></textarea>
     </div>
-    <div class="card">
-        <h3>🔌 开发者 / CI/CD 调用方式</h3>
-        <p style="color:#6b7280;font-size:14px;margin-bottom:12px;">适合集成到自动化测试流程、CI/CD 流水线：</p>
-        <pre># 方式一：免费体验（每月 50 次）
-curl -X POST -H "Content-Type: application/json" \
-  -d '{"csv":"Browser,OS\nChrome,Win\nFirefox,Mac"}' \
+
+    <!-- Tab: Upload -->
+    <div class="tab-content" id="tab-upload">
+      <div class="drop-zone" id="dropZone">
+        <div class="icon">📂</div>
+        <div class="text">拖拽 CSV 文件到此处，或 <strong>点击选择文件</strong></div>
+        <div class="hint">支持 .csv 和 .txt 文件</div>
+        <div class="file-info" id="fileInfo">✅ 已选择：<span id="fileName"></span></div>
+        <input type="file" id="fileInput" accept=".csv,.txt" style="display:none">
+      </div>
+    </div>
+
+    <!-- Tab: Sample -->
+    <div class="tab-content" id="tab-sample">
+      <p style="font-size:14px;color:var(--gray-500);margin-bottom:12px;">第一行为因子名称（表头），后续每行为每个因子的水平值。不同因子可以有不同数量的水平。</p>
+      <table class="example-table">
+        <thead><tr><th>Browser</th><th>OS</th><th>Language</th><th>Screen</th></tr></thead>
+        <tbody>
+          <tr><td>Chrome</td><td>Windows</td><td>English</td><td>1080p</td></tr>
+          <tr><td>Firefox</td><td>macOS</td><td>Chinese</td><td>720p</td></tr>
+          <tr><td>Safari</td><td>Linux</td><td>Japanese</td><td>4K</td></tr>
+          <tr><td>Edge</td><td></td><td>French</td><td></td></tr>
+        </tbody>
+      </table>
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="loadSample()">📋 使用此示例</button>
+      </div>
+    </div>
+
+    <!-- Error -->
+    <div class="error-box" id="errorBox"></div>
+
+    <!-- Actions -->
+    <div class="btn-row">
+      <button class="btn btn-primary" id="generateBtn" onclick="generate()">🚀 生成测试用例</button>
+      <button class="btn btn-secondary" onclick="clearAll()">🗑️ 清空</button>
+    </div>
+
+    <!-- Loading -->
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <span>正在计算最优测试用例集，请稍候...</span>
+    </div>
+  </div>
+
+  <!-- Result Card -->
+  <div class="card" id="result-card">
+    <div class="result-header">
+      <div>
+        <div class="card-title" style="margin-bottom:4px;">✅ 生成结果</div>
+        <div class="result-stats" id="resultStats"></div>
+      </div>
+      <div class="btn-row" style="margin-top:0;">
+        <a class="btn btn-success" id="downloadLink" style="text-decoration:none">⬇️ 下载 CSV</a>
+        <button class="btn btn-secondary" onclick="copyResult()">📋 复制</button>
+      </div>
+    </div>
+    <pre class="result-content" id="resultContent"></pre>
+  </div>
+
+  <!-- API Docs Card -->
+  <div class="card" style="background:var(--gray-50);">
+    <div class="card-title">🔌 开发者 API</div>
+    <p style="font-size:14px;color:var(--gray-500);margin-bottom:12px;">适合 CI/CD、自动化测试平台集成：</p>
+    <pre style="background:#fff;border:1px solid var(--gray-200);border-radius:8px;padding:14px;font-size:13px;overflow-x:auto;font-family:'SF Mono','Consolas',monospace;line-height:1.5;"># 上传文件
+curl -X POST -H "Content-Type: text/plain" \
+  --data-binary @factors.csv \
   https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/ -o testcases.csv
 
-# 方式二：付费用户（带 API Key）
+# JSON 格式
 curl -X POST -H "Content-Type: application/json" \
-  -H "X-Api-Key: YOUR_API_KEY" \
   -d '{"csv":"Browser,OS\nChrome,Win\nFirefox,Mac"}' \
-  https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/ -o testcases.csv
+  https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/ -o testcases.csv</pre>
+  </div>
 
-# 方式三：GitHub Actions 集成
-- name: 生成测试用例
-  run: |
-    curl -X POST -H "Content-Type: application/json" \
-      -H "X-Api-Key: ${{ secrets.QUADCA_API_KEY }}" \
-      -d "{\"csv\":\"$(cat factors.csv)\"}" \
-      https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run/ -o testcases.csv</pre>
-    </div>
-    <div class="footer">Powered by QuadCA · 阿里云函数计算</div>
 </div>
+
+<footer>
+  Powered by <strong>QuadCA</strong> · 阿里云函数计算 · <a href="https://github.com/hgcwei/quadca">GitHub</a>
+</footer>
+
 <script>
 const FC_API_URL = 'https://quadca-wmmctsihdy.cn-hangzhou.fcapp.run';
+let uploadedFile = null;
 
-function loadExample() {
-    document.getElementById('csvText').value =
-        'Browser,OS,Language,Screen\nChrome,Windows,English,1080p\nFirefox,macOS,Chinese,720p\nSafari,Linux,Japanese,4K\nEdge,,French,';
+// ── Tabs ──
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+  });
+});
+
+// ── Drag & Drop ──
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const fileInfo = document.getElementById('fileInfo');
+const fileName = document.getElementById('fileName');
+
+dropZone.addEventListener('click', () => fileInput.click());
+
+dropZone.addEventListener('dragover', e => {
+  e.preventDefault();
+  dropZone.classList.add('dragover');
+});
+dropZone.addEventListener('dragleave', () => {
+  dropZone.classList.remove('dragover');
+});
+dropZone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropZone.classList.remove('dragover');
+  if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
+});
+
+fileInput.addEventListener('change', () => {
+  if (fileInput.files.length > 0) handleFile(fileInput.files[0]);
+});
+
+function handleFile(file) {
+  if (!file.name.match(/\.(csv|txt)$/i)) {
+    showError('请选择 CSV 或 TXT 文件');
+    return;
+  }
+  uploadedFile = file;
+  fileName.textContent = file.name + ' (' + (file.size / 1024).toFixed(1) + ' KB)';
+  fileInfo.classList.add('show');
+  hideError();
 }
 
-async function submitForm(e) {
-    e.preventDefault();
-    var csv = document.getElementById('csvText').value.trim();
-    if (!csv) { alert('请先输入CSV内容'); return false; }
+// ── Sample ──
+function loadSample() {
+  document.getElementById('csvInput').value =
+    'Browser,OS,Language,Screen\nChrome,Windows,English,1080p\nFirefox,macOS,Chinese,720p\nSafari,Linux,Japanese,4K\nEdge,,French,';
+  document.querySelectorAll('.tab')[0].click();
+}
 
-    var apiKey = document.getElementById('apiKey').value.trim();
+// ── Clear ──
+function clearAll() {
+  document.getElementById('csvInput').value = '';
+  document.getElementById('result-card').classList.remove('show');
+  document.getElementById('errorBox').classList.remove('show');
+  document.getElementById('loading').classList.remove('show');
+  fileInfo.classList.remove('show');
+  uploadedFile = null;
+  fileInput.value = '';
+}
 
-    document.getElementById('loading').classList.add('show');
-    document.getElementById('result').classList.remove('show');
+// ── Error ──
+function showError(msg) {
+  const el = document.getElementById('errorBox');
+  el.textContent = '❌ ' + msg;
+  el.classList.add('show');
+}
+function hideError() {
+  document.getElementById('errorBox').classList.remove('show');
+}
 
+// ── Generate ──
+async function generate() {
+  hideError();
+  document.getElementById('result-card').classList.remove('show');
+
+  // Get CSV content
+  let csv = document.getElementById('csvInput').value.trim();
+
+  // If paste tab is empty but file is uploaded, read file
+  if (!csv && uploadedFile) {
     try {
-        var headers = {'Content-Type': 'application/json'};
-        if (apiKey) {
-            headers['X-Api-Key'] = apiKey;
-        }
-
-        var resp = await fetch(FC_API_URL, {
-            method: 'POST',
-            headers: headers,
-            body: JSON.stringify({csv: csv})
-        });
-
-        var text = await resp.text();
-
-        // 校验是否返回错误 JSON
-        try {
-            var json = JSON.parse(text);
-            if (json.error) throw new Error(json.error);
-        } catch(ex) {
-            if (ex.message && !ex.message.includes('JSON')) throw ex;
-        }
-
-        document.getElementById('resultContent').textContent = text;
-        var blob = new Blob([text], {type: 'text/csv'});
-        document.getElementById('downloadLink').href = URL.createObjectURL(blob);
-        document.getElementById('downloadLink').download = 'test_cases.csv';
-        document.getElementById('result').classList.add('show');
-    } catch(ex) {
-        document.getElementById('resultContent').textContent = '❌ 发生错误: ' + ex.message;
-        document.getElementById('result').classList.add('show');
-    } finally {
-        document.getElementById('loading').classList.remove('show');
+      csv = await uploadedFile.text();
+      csv = csv.trim();
+    } catch (e) {
+      showError('无法读取文件内容');
+      return;
     }
-    return false;
+  }
+
+  if (!csv) {
+    showError('请先输入或上传 CSV 内容');
+    return;
+  }
+
+  // Validate: at least 2 rows (header + 1 data) and 2 columns
+  const lines = csv.split('\n').filter(l => l.trim());
+  if (lines.length < 2) {
+    showError('至少需要 2 行（表头 + 1 个水平值）');
+    return;
+  }
+  const cols = lines[0].split(',').filter(c => c.trim());
+  if (cols.length < 2) {
+    showError('至少需要 2 个因子（列）');
+    return;
+  }
+
+  // API Key
+  const apiKey = document.getElementById('apiKey').value.trim();
+
+  // Send
+  const btn = document.getElementById('generateBtn');
+  btn.disabled = true;
+  document.getElementById('loading').classList.add('show');
+
+  try {
+    const headers = { 'Content-Type': 'application/json' };
+    if (apiKey) headers['X-Api-Key'] = apiKey;
+
+    const resp = await fetch(FC_API_URL, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ csv })
+    });
+
+    const text = await resp.text();
+
+    // Check error
+    try {
+      const json = JSON.parse(text);
+      if (json.error) throw new Error(json.error);
+    } catch (ex) {
+      if (ex.message && !ex.message.includes('JSON')) throw ex;
+    }
+
+    // Show result
+    const resultContent = document.getElementById('resultContent');
+    resultContent.textContent = text;
+
+    // Stats
+    const resultLines = text.split('\n').filter(l => l.trim());
+    const factorCount = cols.length;
+    const caseCount = resultLines.length - 1; // minus header
+    document.getElementById('resultStats').innerHTML = `因子：<strong>${factorCount}</strong> 个 · 测试用例：<strong>${caseCount}</strong> 个`;
+
+    // Download
+    const blob = new Blob([text], { type: 'text/csv' });
+    const link = document.getElementById('downloadLink');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'test_cases.csv';
+
+    document.getElementById('result-card').classList.add('show');
+  } catch (ex) {
+    showError(ex.message);
+  } finally {
+    btn.disabled = false;
+    document.getElementById('loading').classList.remove('show');
+  }
 }
 
+// ── Copy ──
 function copyResult() {
-    var text = document.getElementById('resultContent').textContent;
-    navigator.clipboard.writeText(text).then(()=>alert('已成功复制到剪贴板')).catch(()=>alert('复制失败'));
+  const text = document.getElementById('resultContent').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = event.target;
+    const orig = btn.textContent;
+    btn.textContent = '✅ 已复制';
+    setTimeout(() => btn.textContent = orig, 1500);
+  }).catch(() => alert('复制失败，请手动选择复制'));
 }
 </script>
 </body>
